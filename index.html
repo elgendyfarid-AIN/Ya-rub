@@ -1,268 +1,192 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#050f1a"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="Pharma Cross"/>
-<title>Pharma Cross</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{min-height:100vh;background:linear-gradient(135deg,#050f1a 0%,#0a1f2e 50%,#071520 100%);font-family:'Segoe UI',Tahoma,sans-serif;padding:16px 12px 60px;color:#d4e8e0}
-body.ar{direction:rtl}body.en{direction:ltr}
-.lang-bar{display:flex;justify-content:flex-end;margin-bottom:14px}
-body.ar .lang-bar{justify-content:flex-start}
-.lang-toggle{display:flex;background:rgba(0,0,0,0.4);border:1.5px solid #0f2a22;border-radius:20px;overflow:hidden}
-.lang-btn{padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;border:none;background:transparent;color:#4a7a68;transition:all .2s;font-family:inherit}
-.lang-btn.active{background:linear-gradient(135deg,#00c896,#00a8d4);color:#050f1a}
-.header{text-align:center;margin-bottom:18px}
-.badge{display:inline-block;background:linear-gradient(135deg,#00c896,#00a8d4);border-radius:14px;padding:6px 18px;font-size:11px;font-weight:700;color:#050f1a;letter-spacing:1.5px;margin-bottom:10px}
-h1{color:#fff;font-size:24px;font-weight:800;line-height:1.3}
-h1 span{color:#00c896}
-.subtitle{color:#5a8a7a;margin-top:6px;font-size:13px}
-.api-section{max-width:860px;margin:0 auto 16px;background:rgba(255,200,0,0.04);border:1.5px solid #2a2010;border-radius:14px;padding:12px 14px}
-.api-row{display:flex;align-items:center;gap:8px}
-.api-label{color:#8a7030;font-size:12px;white-space:nowrap;font-weight:600}
-.api-input{flex:1;background:rgba(0,0,0,0.3);border:1px solid #3a3010;border-radius:8px;padding:8px 10px;color:#f0d080;font-size:13px;direction:ltr;font-family:monospace;outline:none}
-.api-input::placeholder{color:#4a3a10}
-.api-hint{color:#4a3a10;font-size:11px;margin-top:7px}
-.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;max-width:860px;margin-left:auto;margin-right:auto}
-.tab{padding:7px 14px;border-radius:18px;border:1.5px solid #1a3a2e;background:transparent;color:#4a7a68;font-weight:600;font-size:12px;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
-.tab.active{border-color:#00c896;background:rgba(0,200,150,.15);color:#00c896}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;max-width:860px;margin:0 auto 16px}
-.pill-wrap{display:flex;flex-direction:column;gap:4px}
-.pill{padding:10px 8px;border-radius:10px;border:1.5px solid #0f2a22;background:rgba(255,255,255,.02);color:#6a9a88;font-size:12px;cursor:pointer;text-align:center;transition:all .2s;line-height:1.4;font-family:inherit;font-weight:500;width:100%}
-.pill.active{border-color:#00c896;background:linear-gradient(135deg,rgba(0,200,150,.15),rgba(0,168,212,.08));color:#00e8b0;font-weight:700;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
-.go-btn{display:none;padding:7px 6px;border-radius:8px;border:none;background:linear-gradient(135deg,#00c896,#00a8d4);color:#050f1a;font-weight:800;font-size:12px;cursor:pointer;font-family:inherit;width:100%;animation:popIn .2s ease}
-.go-btn.show{display:block}
-@keyframes popIn{from{opacity:0;transform:scaleY(0.7)}to{opacity:1;transform:scaleY(1)}}
-.custom-box{max-width:860px;margin:0 auto 14px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1.5px solid #0f2a22;border-radius:12px;padding:9px 12px}
-.custom-box input{flex:1;background:transparent;border:none;outline:none;color:#c4ddd6;font-size:13px;font-family:inherit}
-.custom-go{padding:7px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#00c896,#00a8d4);color:#050f1a;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap}
-.custom-go:disabled{background:#0f2a22;color:#2a5a48;cursor:not-allowed}
-.result-box{max-width:860px;margin:0 auto;background:rgba(255,255,255,.03);border:1.5px solid #0f2a22;border-radius:16px;padding:18px 10px;animation:fadeIn .4s ease}
-.result-header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 12px 12px;border-bottom:1px solid #0f2a22;margin-bottom:12px}
-.result-tag{background:linear-gradient(135deg,#00c896,#00a8d4);border-radius:8px;padding:4px 12px;color:#050f1a;font-weight:800;font-size:12px}
-.line{padding:3px 12px;line-height:1.75;font-size:13px}
-.line.head{padding:9px 12px;margin:6px 0 3px;background:rgba(0,200,150,.07);border-radius:8px;border-right:3px solid #00c896;font-weight:700;color:#00c896;font-size:14px}
-body.en .line.head{border-right:none;border-left:3px solid #00c896}
-.loader{max-width:860px;margin:0 auto;text-align:center;padding:28px;color:#00c896;font-size:14px}
-.error{max-width:860px;margin:0 auto;text-align:center;padding:18px;color:#ff8080;font-size:13px;background:rgba(255,80,80,0.05);border-radius:12px;line-height:1.7}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-</style>
-</head>
-<body class="ar">
-
-<div class="lang-bar">
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="btnAr" onclick="setLang('ar')">عربي</button>
-    <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
-  </div>
-</div>
-
-<div class="header">
-  <div class="badge" id="badge">🔬 أداة الصيدلاني الذكي</div>
-  <h1>Cross-Selling<br><span id="title2">المصاحب الذكي</span></h1>
-  <p class="subtitle" id="subtitle">اضغط على أي حالة مباشرةً للحصول على التوصيات</p>
-</div>
-
-<div class="api-section">
-  <div class="api-row">
-    <span style="font-size:16px">🔑</span>
-    <span class="api-label">Gemini API Key:</span>
-    <input class="api-input" id="apiKey" type="password" placeholder="AIzaSy..." oninput="onKeyInput()"/>
-    <span id="keyStatus" style="font-size:16px">⚪</span>
-  </div>
-  <div class="api-hint" id="apiHint">🔒 محفوظ على جهازك فقط — لا يُرسل لأحد</div>
-</div>
-
-<div class="tabs" id="tabs"></div>
-<div class="grid" id="grid"></div>
-
-<div class="custom-box">
-  <span style="color:#3a6a58;font-size:16px">✏️</span>
-  <input id="custom" type="text" onkeydown="if(event.key==='Enter')customGenerate()"/>
-  <button class="custom-go" id="customGoBtn" onclick="customGenerate()" disabled>⚡</button>
-</div>
-
-<div id="output"></div>
-
-<script>
-let lang='ar', activeCat='', activePill='';
-
-const T={
-  badge:{ar:'🔬 أداة الصيدلاني الذكي',en:'🔬 Smart Pharmacist Tool'},
-  title2:{ar:'المصاحب الذكي',en:'Smart Assistant'},
-  subtitle:{ar:'اضغط على أي حالة مباشرةً للحصول على التوصيات',en:'Tap any condition to get instant recommendations'},
-  apiHint:{ar:'🔒 محفوظ على جهازك فقط — لا يُرسل لأحد',en:'🔒 Saved on your device only — never sent anywhere'},
-  customPH:{ar:'أو اكتب حالة مخصصة...',en:'Or type a custom case...'},
-  goBtn:{ar:'⚡ اعمل Cross-Selling',en:'⚡ Cross-Sell'},
-  loader:{ar:'⏳ جاري التحليل...',en:'⏳ Analyzing...'},
-  resultSub:{ar:'تحليل Cross-Selling',en:'Cross-Selling Analysis'},
-  noKey:{ar:'⚠️ أدخل الـ API Key الأول',en:'⚠️ Enter your API Key first'},
-  errSuffix:{ar:'تأكد من الـ API Key أو اعمل Key جديد من aistudio.google.com',en:'Check your API Key or create a new one at aistudio.google.com'},
-};
-
-const CATS={
-  ar:{
-    "أمراض مزمنة":["ضغط الدم المرتفع","السكري النوع الثاني","خلل الدهون","قصور الغدة الدرقية","فرط نشاط الغدة الدرقية","الربو","الحساسية المزمنة","الحموضة المزمنة / GERD","القولون العصبي","الروماتويد","النقرس","الاكتئاب المزمن","القلق المزمن","الصرع","باركنسون","ألزهايمر","فشل كلوي مزمن","الكبد الدهني","أنيميا مزمنة","هشاشة العظام","السمنة المزمنة","الصداع النصفي المزمن","الجلوكوما"],
-    "OTC شائع":["مسكنات الألم (باراسيتامول)","مسكنات الألم (إيبوبروفين)","مضادات الحموضة","مضادات الهيستامين","مكملات الفيتامينات","أوميغا 3","بروبيوتيك","ملينات / إمساك","مضادات إسهال","قطرات عيون جافة","فيتامين د","كالسيوم + د","زنك / مناعة","كولاجين","مكملات رجيم","المغنيسيوم","فيتامين ب12","حديد","كيو 10","الثوم / ضغط طبيعي"],
-    "حالات خاصة":["المرأة الحامل","المرضعة","كبار السن (65+)","الأطفال (0-5)","الأطفال (6-12)","المراهقون (13-18)","رياضيون","مرضى ما بعد الجراحة","مرضى كيماوي","المسافرون","الصائمون","النساء في سن اليأس","مرضى المناعة الذاتية"],
-    "العناية بالبشرة":["حب الشباب (أكني)","البشرة الجافة","البشرة الدهنية","البشرة الحساسة","الإكزيما / الأتوبيك","الصدفية","التصبغات / البقع الداكنة","الشيخوخة المبكرة","التجاعيد","الهالات السوداء","حروق الشمس","التندبات والآثار","البشرة المختلطة","الوردية (Rosacea)","تشققات الجلد"],
-    "العناية بالشعر":["تساقط الشعر (الذكور)","تساقط الشعر (الإناث)","قشرة الشعر","الشعر الجاف والهش","الشعر الدهني","فروة الرأس الحساسة","الثعلبة (Alopecia)","الشعر بعد الولادة","تلف الشعر من الصبغات","بطء نمو الشعر","الشعر الرفيع وقلة الكثافة"]
+{
+  "name": "yarub-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  en:{
-    "Chronic Diseases":["Hypertension","Type 2 Diabetes","Dyslipidemia","Hypothyroidism","Hyperthyroidism","Asthma","Chronic Allergies","GERD / Acid Reflux","IBS","Rheumatoid Arthritis","Gout","Chronic Depression","Chronic Anxiety","Epilepsy","Parkinson's","Alzheimer's","Chronic Kidney Disease","Fatty Liver","Chronic Anemia","Osteoporosis","Chronic Obesity","Chronic Migraine","Glaucoma"],
-    "Common OTC":["Pain Relievers (Paracetamol)","Pain Relievers (Ibuprofen)","Antacids","Antihistamines","Vitamin Supplements","Omega-3","Probiotics","Laxatives / Constipation","Anti-diarrheal","Dry Eye Drops","Vitamin D","Calcium + D","Zinc / Immunity","Collagen","Weight Loss Supplements","Magnesium","Vitamin B12","Iron","CoQ10","Garlic / Natural BP"],
-    "Special Cases":["Pregnant Women","Breastfeeding","Elderly (65+)","Children (0-5)","Children (6-12)","Teenagers (13-18)","Athletes","Post-Surgery Patients","Chemotherapy Patients","Travelers","Fasting Patients","Menopausal Women","Autoimmune Patients"],
-    "Skin Care":["Acne / Pimples","Dry Skin","Oily Skin","Sensitive Skin","Eczema / Atopic Dermatitis","Psoriasis","Hyperpigmentation / Dark Spots","Premature Aging","Wrinkles","Dark Circles","Sunburn","Scars & Marks","Combination Skin","Rosacea","Skin Cracks / Fissures"],
-    "Hair Care":["Hair Loss (Male)","Hair Loss (Female)","Dandruff","Dry & Brittle Hair","Oily Hair","Sensitive Scalp","Alopecia","Postpartum Hair Loss","Color-damaged Hair","Slow Hair Growth","Thin / Low Density Hair"]
-  }
-};
-
-function getPrompt(q){
-  if(lang==='ar') return `أنت صيدلاني خبير في pharmacy counseling وcross-selling احترافي. قدم تقرير cross-selling شامل باللغة العربية للحالة التالية: ${q}
-
-اتبع هذا الترتيب بالضبط:
-**1. 🎯 المنتجات الأساسية للبيع المصاحب** (3-5 منتجات مع سبب طبي واضح لكل منها)
-**2. ⚠️ تنبيهات المريض الضرورية** (أهم 3 نقاط)
-**3. 💊 تفاعلات وتحذيرات مهمة**
-**4. 📋 جملة البيع الاحترافية** (جملة واحدة مقنعة للمريض)
-**5. 💡 فرصة cross-selling إضافية ذكية**
-
-كن دقيقاً طبياً وموجزاً.`;
-  return `You are an expert pharmacist specialized in pharmacy counseling and professional cross-selling. Provide a comprehensive cross-selling report in English for this case: ${q}
-
-Follow this exact order:
-**1. 🎯 Primary Cross-Selling Products** (3-5 products with a clear medical reason for each)
-**2. ⚠️ Essential Patient Counseling Points** (top 3 points)
-**3. 💊 Important Interactions & Warnings**
-**4. 📋 Professional Sales Phrase** (one convincing sentence for the patient)
-**5. 💡 Smart Additional Cross-Selling Opportunity**
-
-Be medically accurate and concise.`;
-}
-
-function setLang(l){
-  lang=l;
-  document.body.className=l;
-  document.getElementById('btnAr').className='lang-btn'+(l==='ar'?' active':'');
-  document.getElementById('btnEn').className='lang-btn'+(l==='en'?' active':'');
-  document.getElementById('badge').textContent=T.badge[l];
-  document.getElementById('title2').textContent=T.title2[l];
-  document.getElementById('subtitle').textContent=T.subtitle[l];
-  document.getElementById('apiHint').textContent=T.apiHint[l];
-  document.getElementById('custom').placeholder=T.customPH[l];
-  document.getElementById('custom').style.direction=l==='ar'?'rtl':'ltr';
-  activeCat=''; activePill='';
-  document.getElementById('output').innerHTML='';
-  document.getElementById('custom').value='';
-  renderTabs(); renderGrid(); updateCustomBtn();
-  localStorage.setItem('pharma_lang',l);
-}
-
-function renderTabs(){
-  document.getElementById('tabs').innerHTML=Object.keys(CATS[lang]).map(cat=>
-    `<button class="tab${cat===activeCat?' active':''}" onclick="selectCat('${cat.replace(/'/g,"\\'")}')">${cat}</button>`
-  ).join('');
-}
-
-function renderGrid(){
-  if(!activeCat){document.getElementById('grid').innerHTML='';return;}
-  document.getElementById('grid').innerHTML=CATS[lang][activeCat].map(c=>{
-    const isActive=c===activePill;
-    const safe=c.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-    return `<div class="pill-wrap">
-      <button class="pill${isActive?' active':''}" onclick="selectPill('${safe}')">${c}</button>
-      <button class="go-btn${isActive?' show':''}" onclick="generateFor('${safe}')">${T.goBtn[lang]}</button>
-    </div>`;
-  }).join('');
-}
-
-function selectCat(cat){activeCat=cat;activePill='';renderTabs();renderGrid();}
-function selectPill(val){activePill=val;renderGrid();}
-function onKeyInput(){
-  const k=document.getElementById('apiKey').value.trim();
-  if(k.startsWith('AIza')&&k.length>20){
-    localStorage.setItem('gemini_pharma_key',k);
-    document.getElementById('keyStatus').textContent='🟢';
-  } else {
-    document.getElementById('keyStatus').textContent='🔴';
-  }
-  updateCustomBtn();
-}
-function updateCustomBtn(){
-  const q=document.getElementById('custom').value.trim();
-  const k=document.getElementById('apiKey').value.trim();
-  document.getElementById('customGoBtn').disabled=!q||!(k.startsWith('AIza')&&k.length>20);
-}
-function customGenerate(){
-  const q=document.getElementById('custom').value.trim();
-  if(q) generateFor(q);
-}
-
-async function generateFor(query){
-  const key=document.getElementById('apiKey').value.trim();
-  if(!key.startsWith('AIza')||key.length<20){
-    document.getElementById('output').innerHTML=`<div class="error">${T.noKey[lang]}</div>`;
-    return;
-  }
-  document.getElementById('output').innerHTML=`<div class="loader">${T.loader[lang]}</div>`;
-  document.getElementById('output').scrollIntoView({behavior:'smooth',block:'start'});
-
-  try{
-    const res=await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${key}`,
-      {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          contents:[{
-            role:'user',
-            parts:[{text: getPrompt(query)}]
-          }],
-          generationConfig:{
-            temperature:0.7,
-            maxOutputTokens:1024
-          }
-        })
-      }
-    );
-    const data=await res.json();
-    if(data.error) throw new Error(data.error.message);
-    const text=data.candidates?.[0]?.content?.parts?.[0]?.text||'';
-    if(!text) throw new Error('No response received');
-    renderResult(query,text);
-  }catch(e){
-    document.getElementById('output').innerHTML=
-      `<div class="error">❌ ${e.message}<br><br>💡 ${T.errSuffix[lang]}</div>`;
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.284.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.4.5"
   }
 }
-
-function renderResult(label,text){
-  const lines=text.split('\n').map(line=>{
-    if(!line.trim()) return `<div style="height:5px"></div>`;
-    const isBold=/^\*\*/.test(line.trim());
-    const clean=line.replace(/\*\*/g,'').replace(/^\*\s?/,'• ');
-    return `<div class="line${isBold?' head':''}">${clean}</div>`;
-  }).join('');
-  document.getElementById('output').innerHTML=`
-    <div class="result-box">
-      <div class="result-header">
-        <div class="result-tag">${label}</div>
-        <span style="color:#2a5a48;font-size:11px">${T.resultSub[lang]}</span>
-      </div>${lines}
-    </div>`;
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        gold: {
+          50: '#fcf4d9',
+          100: '#f9e9b3',
+          200: '#f3d366',
+          300: '#edbd1a',
+          400: '#d4af37', // اللون الذهبي الأساسي
+          500: '#8b6d11',
+        },
+        brown: {
+          900: '#2d241e',
+        }
+      },
+    },
+  },
+  plugins: [],
 }
-
-window.onload=()=>{
-  const savedKey=localStorage.getItem('gemini_pharma_key');
-  if(savedKey){document.getElementById('apiKey').value=savedKey;document.getElementById('keyStatus').textContent='🟢';}
-  const savedLang=localStorage.getItem('pharma_lang')||'ar';
-  setLang(savedLang);
-};
-document.getElementById('custom').addEventListener('input',updateCustomBtn);
-</script>
-</body>
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>يَعْرُب - منهج نور البيان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  @apply bg-[#fffdf5] text-[#2d241e];
+  margin: 0;
+  padding: 0;
+}
+
+/* تحسين شكل التمرير */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fcf4d9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 10px;
+}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+import React from 'react';
+import { Volume2 } from 'lucide-react';
+
+const AlphabetCard = ({ letter, image, spelling }) => (
+  <div className="bg-white rounded-2xl shadow-xl border-b-8 border-[#d4af37] p-6 flex flex-col items-center">
+    <div className="w-full flex justify-between items-start mb-4">
+      <span className="text-6xl font-black text-[#2d241e] font-['Amiri']">{letter}</span>
+      <button className="p-3 bg-[#fcf4d9] rounded-full text-[#8b6d11] hover:bg-[#d4af37] hover:text-white transition-colors">
+        <Volume2 size={24} />
+      </button>
+    </div>
+    <div className="w-32 h-32 bg-[#fffdf5] rounded-full flex items-center justify-center mb-4 border-2 border-[#d4af37] overflow-hidden">
+      <img src={`https://api.dicebear.com/7.x/bottts/svg?seed=${image}`} alt={image} className="w-20 h-20" />
+    </div>
+    <div className="text-center w-full">
+      <p className="text-xs text-[#d4af37] font-bold mb-1 tracking-widest uppercase">منهج نور البيان</p>
+      <div className="bg-[#fcf4d9] p-4 rounded-xl border border-[#d4af37]/30 min-h-[110px] flex items-center justify-center shadow-inner">
+        <p className="text-lg text-[#2d241e] font-bold leading-relaxed whitespace-pre-line font-['Cairo']">{spelling}</p>
+      </div>
+    </div>
+  </div>
+);
+
+export default function App() {
+  const letters = [
+    { letter: "أَ", image: "lion", spelling: "هَمزة فَتحة (أَ)\nسِين فَتحة (سَ) - (أَسَ)\nدَال ضَمَّتَيْن (دٌ) - أَسَدٌ" },
+    { letter: "بَ", image: "sea", spelling: "بَا فَتحة (بَ)\nحَا سُكون (بَحْ)\nرَا ضَمَّتَيْن (رٌ) - بَحْرٌ" },
+    { letter: "تَ", image: "dates", spelling: "تَا فَتحة (تَ)\nمِيم سُكون (تَمْ)\nرَا ضَمَّتَيْن (رٌ) - تَمْرٌ" },
+    { letter: "ثَ", image: "fox", spelling: "ثاء فتحة ثَ - عين سكون ثَعْ\nلام فتحة لَ - ثَعْلَ\nباء ضمتين بٌ - ثَعْلَبٌ" },
+    { letter: "جَ", image: "camel", spelling: "جيم فتحة جَ - ميم فتحة مَ\nجَمَ - لام ضمتين لٌ - جَمَلٌ" },
+    { letter: "حَ", image: "pigeon", spelling: "حاء فتحة حَ - ميم فتحة مَ\nحَمَ - ألف مد حَمَا\nميم فتحة مَ - تاء ضمتين تٌ" },
+    { letter: "خَ", image: "sheep", spelling: "خاء فتحة خَ - راء ضمة رُ\nخَرُ - واو مد خَرُو\nفاء ضمتين فٌ - خَرُوفٌ" },
+    { letter: "دَ", image: "rooster", spelling: "دال فتحة دَ - ياء سكون دَيْ\nكاف ضمتين كٌ - دَيْكٌ" },
+    { letter: "ذَ", image: "tail", spelling: "ذال فتحة ذَ - ياء سكون ذَيْ\nلام ضمتين لٌ - ذَيْلٌ" },
+    { letter: "رَ", image: "pomegranate", spelling: "راء فتحة رَ - ميم شدة رُمَّـ\nألف مد رُمَّا - نون ضمتين نٌ" },
+    { letter: "زَ", image: "giraffe", spelling: "زاي فتحة زَ - راء فتحة رَ\nألف مد زَرَا - فاء فتحة فَ" },
+    { letter: "سَ", image: "fish", spelling: "سين فتحة سَ - ميم فتحة مَ\nكاف فتحة كَ - تاء ضمتين تٌ" },
+    { letter: "شَ", image: "tree", spelling: "شين فتحة شَ - جيم فتحة جَ\nراء فتحة رَ - تاء ضمتين تٌ" },
+    { letter: "صَ", image: "falcon", spelling: "صاد فتحة صَ - قاف سكون صَقْ\nراء ضمتين رٌ - صَقْرٌ" },
+    { letter: "ضَ", image: "tooth", spelling: "ضاد فتحة ضَ - راء سكون ضِرْ\nسين ضمتين سٌ - ضِرْسٌ" },
+    { letter: "طَ", image: "bird", spelling: "طَا فَتحة (طَ) - يَا سُكون (طَيْ)\nرَا ضَمَّتَيْن (رٌ) - طَيْرٌ" },
+    { letter: "ظَ", image: "deer", spelling: "ظَا فَتحة (ظَ) - بَا سُكون (ظَبْ)\nيَا ضَمَّتَيْن (يٌ) - ظَبْيٌ" },
+    { letter: "عَ", image: "flag", spelling: "عَيْن فَتحة (عَ) - لام فَتحة (لَ)\nمِيم ضَمَّتَيْن (مٌ) - عَلَمٌ" },
+    { letter: "غَ", image: "gazelle", spelling: "غَيْن فَتحة (غَ) - زَا فَتحة (زَ)\nألف مَد (غَزَا) - لام ضَمَّتَيْن (لٌ)" },
+    { letter: "فَ", image: "horse", spelling: "فَا فَتحة (فَ) - راء فَتحة (رَ)\nسِين ضَمَّتَيْن (سٌ) - فَرَسٌ" },
+    { letter: "قَ", image: "pen", spelling: "قَاف فَتحة (قَ) - لام فَتحة (لَ)\nمِيم ضَمَّتَيْن (مٌ) - قَلَمٌ" },
+    { letter: "كَ", image: "book", spelling: "كَاف كَسرة (كِ) - تَا فَتحة (تَ)\nألف مَد (كِتَا) - بَا ضَمَّتَيْن (بٌ)" },
+    { letter: "لَ", image: "tongue", spelling: "لام كَسرة (لِ) - سِين فَتحة (سَ)\nألف مَد (لِسَا) - نُون ضَمَّتَيْن (نٌ)" },
+    { letter: "مَ", image: "king", spelling: "مِيم فَتحة (مَ) - لام كَسرة (لِ)\nكَاف ضَمَّتَيْن (كٌ) - مَلِكٌ" },
+    { letter: "نَ", image: "palm", spelling: "نُون فَتحة (نَ) - خَا سُكون (نَخْ)\nلام فَتحة (لَ) - تَا ضَمَّتَيْن (تٌ)" },
+    { letter: "هَـ", image: "moon", spelling: "هَا فَتحة (هَـ) - لام كَسرة (لِ)\nألف مَد (هِلَا) - لام ضَمَّتَيْن (لٌ)" },
+    { letter: "وَ", image: "flower", spelling: "وَاو فَتحة (وَ) - رَا سُكون (وَرْ)\nدَال فَتحة (دَ) - تَا ضَمَّتَيْن (تٌ)" },
+    { letter: "يَ", image: "hand", spelling: "يَا فَتحة (يَ) - دَال ضَمَّتَيْن (دٌ) - يَدٌ" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#fffdf5] font-sans pb-20" dir="rtl">
+      <header className="bg-white border-b-4 border-[#d4af37] py-6 shadow-xl mb-10 sticky top-0 z-20">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="bg-[#d4af37] p-2 rounded-xl text-white font-bold text-3xl shadow-lg transform -rotate-3">ي</div>
+            <h1 className="text-4xl font-black text-[#8b6d11]">يَعْرُب</h1>
+          </div>
+          <span className="text-[#8b6d11] font-bold text-xl">وادي الفتح</span>
+        </div>
+      </header>
+      <main className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+        {letters.map((item, index) => <AlphabetCard key={index} {...item} />)}
+      </main>
+      <footer className="mt-20 text-center py-10 border-t border-[#d4af37]/20 text-[#8b6d11] font-bold">
+        مشروع يَعْرُب - الفصاحة تبدأ من هنا
+      </footer>
+    </div>
+  );
+}
+

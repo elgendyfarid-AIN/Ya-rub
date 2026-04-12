@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>يَعْرُب | تأسيس اللغة العربية</title>
+    <title>يَعْرُبُ | تَأْسِيسُ اللُّغَةِ الْعَرَبِيَّةِ</title>
     
-    <!-- Google Fonts: خطوط عربية فاخرة -->
+    <!-- خطوط عربية فاخرة: Amiri للعناوين الذهبية، Cairo للمحتوى الواضح -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- خط Amiri للعناوين الفخمة -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- خط Cairo للقراءة الواضحة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ========== إعدادات عامة ========== */
+        /* ==================== تنسيقات يَعْرُبُ الذهبية ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background-color: #2B1B0E; /* البني الداكن (لون خشب الأرابيسك) */
+            background-color: #2B1B0E; /* البني الداكن العميق */
             font-family: 'Cairo', sans-serif;
-            color: #F5E6C8; /* بيج ذهبي فاتح */
+            color: #F5E6C8;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 16px 12px;
-            /* زخرفة خلفية دقيقة */
             background-image: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 30%);
+            direction: rtl;
         }
-
         .app-container {
             max-width: 480px;
             width: 100%;
             margin: 0 auto;
-            background: rgba(43, 27, 14, 0.8);
+            background: rgba(43, 27, 14, 0.85);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 48px 48px 32px 32px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 1px #D4AF37 inset, 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.7), 0 0 0 1.5px #D4AF37 inset, 0 0 20px rgba(212, 175, 55, 0.25);
             padding: 24px 16px 32px;
             position: relative;
             overflow: hidden;
         }
-
-        /* زخرفة الأرابيسك العلوية والسفلية */
+        /* زخرفة البسملة العلوية */
         .app-container::before {
             content: "﷽";
             position: absolute;
@@ -57,13 +50,14 @@
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Amiri', serif;
-            font-size: 24px;
+            font-size: 26px;
             color: #D4AF37;
-            opacity: 0.15;
+            opacity: 0.12;
             white-space: nowrap;
             font-weight: normal;
+            pointer-events: none;
         }
-
+        /* شريط ذهبي سفلي */
         .app-container::after {
             content: "";
             position: absolute;
@@ -72,215 +66,216 @@
             width: 100%;
             height: 6px;
             background: linear-gradient(90deg, transparent, #D4AF37, #FFDF73, #D4AF37, transparent);
+            pointer-events: none;
         }
-
-        /* ========== الهيدر ========== */
+        /* ========== الهيدر المُشكَّل ========== */
         .header {
             text-align: center;
             margin-bottom: 32px;
             position: relative;
             z-index: 2;
         }
-
         .yaarub-title {
             font-family: 'Amiri', serif;
-            font-size: 64px;
+            font-size: 68px;
             font-weight: 700;
             line-height: 1.2;
-            color: #D4AF37;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.4);
-            letter-spacing: 8px;
-            margin-bottom: 8px;
-            /* تأثير الذهب */
-            background: linear-gradient(135deg, #F5E6C8, #D4AF37, #FFDF73);
+            background: linear-gradient(135deg, #F5E6C8, #D4AF37, #FFE28A);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            letter-spacing: 10px;
+            margin-bottom: 8px;
         }
-
         .subtitle {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
             color: #C9A96E;
-            letter-spacing: 2px;
-            border-top: 1px solid #D4AF37;
-            border-bottom: 1px solid #D4AF37;
+            letter-spacing: 3px;
+            border-top: 1.5px solid #D4AF37;
+            border-bottom: 1.5px solid #D4AF37;
             display: inline-block;
-            padding: 6px 24px;
+            padding: 8px 28px;
             margin-top: 4px;
-            font-family: 'Cairo', sans-serif;
         }
-
-        /* ========== شريط التقدم (اختياري) ========== */
+        /* ========== شريط التقدم المُشكَّل ========== */
         .progress-section {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.08);
             border-radius: 60px;
-            padding: 12px 16px;
+            padding: 14px 18px;
             margin-bottom: 32px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             backdrop-filter: blur(4px);
         }
-
         .progress-label {
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: 15px;
             color: #E8D5A8;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
-
         .progress-bar-bg {
-            height: 8px;
+            height: 10px;
             background-color: #1F140A;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
             border: 1px solid #4A3720;
         }
-
         .progress-bar-fill {
             height: 100%;
-            width: 0%; /* سيتغير بالجافاسكريبت */
+            width: 0%;
             background: linear-gradient(90deg, #B8860B, #D4AF37, #FFDF73);
-            border-radius: 20px;
-            box-shadow: 0 0 8px #FFDF73;
+            border-radius: 30px;
+            box-shadow: 0 0 10px #FFDF73;
             transition: width 0.3s ease;
         }
-
-        /* ========== بطاقات المستويات ========== */
+        /* ========== بطاقات المستويات المُشكَّلة ========== */
         .levels-grid {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 20px;
             margin-bottom: 32px;
         }
-
         .level-card {
-            background: rgba(31, 20, 10, 0.7);
-            backdrop-filter: blur(4px);
+            background: rgba(31, 20, 10, 0.75);
+            backdrop-filter: blur(5px);
             border: 1px solid #6B4F2C;
-            border-radius: 28px;
-            padding: 20px 18px;
+            border-radius: 32px;
+            padding: 20px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.2s;
-            box-shadow: 0 6px 0 #0E0905;
+            box-shadow: 0 8px 0 #0E0905;
             text-decoration: none;
             color: inherit;
             position: relative;
             overflow: hidden;
+            transition: transform 0.15s, box-shadow 0.15s;
         }
-
         .level-card::after {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 6px;
+            width: 7px;
             height: 100%;
             background: #D4AF37;
-            box-shadow: 0 0 12px #D4AF37;
+            box-shadow: 0 0 14px #D4AF37;
         }
-
         .level-card:active {
-            transform: translateY(3px);
-            box-shadow: 0 3px 0 #0E0905;
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #0E0905;
         }
-
         .level-info h3 {
             font-family: 'Amiri', serif;
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 700;
             color: #D4AF37;
-            line-height: 1.3;
+            line-height: 1.2;
+            margin-bottom: 4px;
         }
-
         .level-info p {
-            font-size: 14px;
+            font-size: 15px;
             color: #C9B896;
-            margin-top: 4px;
         }
-
         .level-icon {
-            font-size: 42px;
+            font-size: 44px;
             background: rgba(212, 175, 55, 0.1);
-            width: 64px;
-            height: 64px;
+            width: 68px;
+            height: 68px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid #D4AF37;
+            border: 1.5px solid #D4AF37;
             color: #D4AF37;
         }
-
-        /* أيقونة القفل للمستويات المقفلة */
+        /* المستوى المقفل */
         .level-card.locked {
             opacity: 0.7;
-            filter: grayscale(0.5);
-            pointer-events: none; /* تفعيله لاحقاً بالجافا سكريبت */
+            filter: grayscale(0.6);
+            pointer-events: none;
         }
-
         .level-card.locked .level-icon {
             color: #7A6A4B;
             border-color: #7A6A4B;
         }
-
         .level-card.locked::after {
             background: #7A6A4B;
             box-shadow: none;
         }
-
-        /* ========== قسم التشجيع ========== */
+        /* ========== صندوق التحفيز المُشكَّل ========== */
         .motivation-box {
             background: linear-gradient(145deg, #1F140A, #2B1B0E);
-            border-radius: 24px;
-            padding: 16px 20px;
-            border-right: 6px solid #D4AF37;
+            border-radius: 28px;
+            padding: 18px 20px;
+            border-right: 8px solid #D4AF37;
             margin-bottom: 24px;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
             text-align: center;
             color: #F5E6C8;
             box-shadow: inset 0 0 15px #00000033, 0 6px 0 #0E0905;
         }
-
         .motivation-box span {
             color: #D4AF37;
             font-family: 'Amiri', serif;
-            font-size: 22px;
+            font-size: 24px;
         }
-
-        /* ========== الفوتر ========== */
+        /* ========== الفوتر المُشكَّل ========== */
         .footer {
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: #A58E6D;
             margin-top: 8px;
             border-top: 1px dashed #6B4F2C;
-            padding-top: 18px;
+            padding-top: 20px;
         }
-
         .footer p {
             font-family: 'Amiri', serif;
             letter-spacing: 1px;
         }
-
-        /* ========== تجاوب الجوال ========== */
+        /* زر ذهبي عام */
+        .btn-gold {
+            background: transparent;
+            border: 1.5px solid #D4AF37;
+            color: #D4AF37;
+            font-family: 'Cairo', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #6B4F2C;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            backdrop-filter: blur(4px);
+            background-color: rgba(43, 27, 14, 0.6);
+        }
+        .btn-gold:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #6B4F2C;
+        }
+        /* تجاوب الجوال */
         @media (max-width: 400px) {
             .yaarub-title {
                 font-size: 52px;
-                letter-spacing: 4px;
+                letter-spacing: 6px;
             }
             .level-info h3 {
-                font-size: 24px;
-            }
-            .motivation-box {
-                font-size: 16px;
+                font-size: 26px;
             }
         }
-
-        /* إخفاء أي عناصر موسيقية أو مؤثرات صوتية صناعية */
+        /* ========== حاوية الصور التوضيحية (SVG) ========== */
+        .demo-visual {
+            margin: 20px 0 10px;
+            display: flex;
+            justify-content: center;
+        }
+        /* أي عناصر وسائط خارجية مخفية (لا موسيقى) */
         audio, video {
             display: none;
         }
@@ -289,197 +284,1638 @@
 <body>
     <div class="app-container">
         <div class="header">
-            <h1 class="yaarub-title">يَعْرُب</h1>
-            <div class="subtitle">اللسان العربي المبين</div>
+            <!-- الاسم مشكول بالفتح والضم -->
+            <h1 class="yaarub-title">يَعْرُبُ</h1>
+            <div class="subtitle">اللِّسَانُ الْعَرَبِيُّ الْمُبِينُ</div>
         </div>
 
-        <!-- شريط تقدم الطفل (متزامن مع localStorage) -->
+        <!-- شريط التقدم -->
         <div class="progress-section">
             <div class="progress-label">
-                <span>📍 رحلتك في البيان</span>
-                <span id="progress-percent">0%</span>
+                <span>📍 رِحْلَتُكَ فِي الْبَيَانِ</span>
+                <span id="progress-percent">٠٪</span>
             </div>
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
             </div>
         </div>
 
-        <!-- قائمة المستويات التعليمية الأربعة -->
+        <!-- قائمة المستويات الأربعة -->
         <div class="levels-grid">
-            <!-- المستوى 1: الحروف والحركات -->
-            <a href="lessons/level-1/lesson-1-1.html" class="level-card" id="level-1-card">
+            <!-- المستوى الأول -->
+            <a href="#level1" class="level-card" id="level-1-card">
                 <div class="level-info">
-                    <h3>المستوى الأول</h3>
-                    <p>الحروف والحركات (الفتح والكسر والضم)</p>
+                    <h3>الْمُسْتَوَى الْأَوَّلُ</h3>
+                    <p>الْحُرُوفُ وَالْحَرَكَاتُ (الْفَتْحُ وَالْكَسْرُ وَالضَّمُّ)</p>
                 </div>
                 <div class="level-icon">📖</div>
             </a>
-
-            <!-- المستوى 2: المدود والسكون -->
-            <a href="lessons/level-2/lesson-2-1.html" class="level-card locked" id="level-2-card">
+            <!-- المستوى الثاني -->
+            <a href="#level2" class="level-card locked" id="level-2-card">
                 <div class="level-info">
-                    <h3>المستوى الثاني</h3>
-                    <p>المدود (الألف والواو والياء) والسكون</p>
+                    <h3>الْمُسْتَوَى الثَّانِي</h3>
+                    <p>الْمُدُودُ (الْأَلِفُ وَالْوَاوُ وَالْيَاءُ) وَالسُّكُونُ</p>
                 </div>
                 <div class="level-icon">🔐</div>
             </a>
-
-            <!-- المستوى 3: التنوين والشدة -->
-            <a href="lessons/level-3/lesson-3-1.html" class="level-card locked" id="level-3-card">
+            <!-- المستوى الثالث -->
+            <a href="#level3" class="level-card locked" id="level-3-card">
                 <div class="level-info">
-                    <h3>المستوى الثالث</h3>
-                    <p>التنوين والشدة واللام الشمسية والقمرية</p>
+                    <h3>الْمُسْتَوَى الثَّالِثُ</h3>
+                    <p>التَّنْوِينُ وَالشَّدَّةُ وَاللَّامُ الشَّمْسِيَّةُ وَالْقَمَرِيَّةُ</p>
                 </div>
                 <div class="level-icon">🔐</div>
             </a>
-
-            <!-- المستوى 4: القراءة والتعبير -->
-            <a href="lessons/level-4/lesson-4-1.html" class="level-card locked" id="level-4-card">
+            <!-- المستوى الرابع -->
+            <a href="#level4" class="level-card locked" id="level-4-card">
                 <div class="level-info">
-                    <h3>المستوى الرابع</h3>
-                    <p>القراءة والإملاء والتعبير</p>
+                    <h3>الْمُسْتَوَى الرَّابِعُ</h3>
+                    <p>الْقِرَاءَةُ وَالْإِمْلَاءُ وَالتَّعْبِيرُ</p>
                 </div>
                 <div class="level-icon">🔐</div>
             </a>
         </div>
 
-        <!-- رسالة تحفيزية متغيرة -->
+        <!-- نموذج صورة توضيحية (SVG) لحرف الألف مع الفتحة، كدليل على جودة الصور المدمجة -->
+        <div class="demo-visual">
+            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- خلفية ذهبية شفافة -->
+                <circle cx="60" cy="60" r="55" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="4 4" opacity="0.6"/>
+                <circle cx="60" cy="60" r="48" fill="#1F140A" stroke="#B8860B" stroke-width="1.5"/>
+                <!-- حرف الألف بخط عريض -->
+                <text x="60" y="78" font-family="Amiri, serif" font-size="64" fill="#D4AF37" text-anchor="middle" font-weight="700">أَ</text>
+                <!-- حركة الفتحة فوق الألف -->
+                <text x="60" y="42" font-family="Cairo, sans-serif" font-size="24" fill="#FFDF73" text-anchor="middle">ﹷ</text>
+                <!-- تسمية -->
+                <text x="60" y="105" font-family="Cairo, sans-serif" font-size="14" fill="#C9A96E" text-anchor="middle">هَمْزَةٌ مَفْتُوحَةٌ</text>
+            </svg>
+        </div>
+
+        <!-- رسالة تحفيزية مشكولة -->
         <div class="motivation-box" id="motivation-message">
-            <span>«</span> ابدأ بالحرف تكن فصيحاً <span>»</span>
+            <span>«</span> ابْدَأْ بِالْحَرْفِ تَكُنْ فَصِيحًا <span>»</span>
         </div>
 
         <div class="footer">
-            <p>على نهج نور البيان • أصوات بشرية فصيحة</p>
-            <p style="margin-top: 6px;">© 1447 هـ - يَعْرُب</p>
+            <p>عَلَى نَهْجِ نُورِ الْبَيَانِ • أَصْوَاتٌ بَشَرِيَّةٌ فَصِيحَةٌ</p>
+            <p style="margin-top: 6px;">© ١٤٤٧ هـ - يَعْرُبُ</p>
         </div>
     </div>
 
     <script>
         (function(){
-            "use strict";
-
-            // ========== إدارة تقدم الطفل ==========
-            // نستخدم localStorage لتخزين الدرس الذي وصل إليه الطفل
-            // وسنقوم بفتح المستويات بناءً على التقدم
-            
+            // نظام تتبع تقدم الطفل (تخزين محلي)
             const STORAGE_KEY = 'yaarub_progress';
-            
-            // هيكل البيانات الافتراضي
             const defaultProgress = {
                 currentLevel: 1,
                 currentLesson: 1,
-                completedLessons: [], // قائمة بالدروس المكتملة
+                completedLessons: [],
                 lastActive: new Date().toISOString()
             };
-
-            // استرجاع أو إنشاء بيانات التقدم
+            
             function getProgress() {
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
-                    try {
-                        return JSON.parse(stored);
-                    } catch(e) {
-                        return defaultProgress;
-                    }
+                    try { return JSON.parse(stored); } catch(e) { return defaultProgress; }
                 }
                 return defaultProgress;
             }
-
-            // حفظ التقدم
+            
             function saveProgress(progress) {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
             }
-
-            // تحديث واجهة المستوى بناءً على التقدم
+            
             function updateUI() {
                 const progress = getProgress();
-                
-                // حساب نسبة التقدم الإجمالية (تقريبي)
-                const totalLessons = 70; // إجمالي الدروس التقريبي
+                const totalLessons = 70; // إجمالي تقديري
                 const completed = progress.completedLessons ? progress.completedLessons.length : 0;
                 const percent = Math.min(100, Math.round((completed / totalLessons) * 100));
                 
-                document.getElementById('progress-percent').textContent = percent + '%';
+                document.getElementById('progress-percent').textContent = percent + '٪';
                 document.getElementById('progress-bar-fill').style.width = percent + '%';
-
-                // فتح المستويات حسب الإنجاز
-                const level1Card = document.getElementById('level-1-card');
-                const level2Card = document.getElementById('level-2-card');
-                const level3Card = document.getElementById('level-3-card');
-                const level4Card = document.getElementById('level-4-card');
-
-                // المستوى الأول مفتوح دائماً
-                level1Card.classList.remove('locked');
                 
-                // المستوى الثاني يتطلب إنهاء 10 دروس من المستوى الأول مثلاً
+                const level2 = document.getElementById('level-2-card');
+                const level3 = document.getElementById('level-3-card');
+                const level4 = document.getElementById('level-4-card');
+                
+                // فتح المستويات بناءً على عدد الدروس المكتملة
                 if (completed >= 10) {
-                    level2Card.classList.remove('locked');
-                    level2Card.querySelector('.level-icon').textContent = '📚';
+                    level2.classList.remove('locked');
+                    level2.querySelector('.level-icon').textContent = '📚';
                 } else {
-                    level2Card.classList.add('locked');
-                    level2Card.querySelector('.level-icon').textContent = '🔐';
+                    level2.classList.add('locked');
+                    level2.querySelector('.level-icon').textContent = '🔐';
                 }
                 
-                // المستوى الثالث يتطلب إنهاء 25 درس
                 if (completed >= 25) {
-                    level3Card.classList.remove('locked');
-                    level3Card.querySelector('.level-icon').textContent = '✍️';
+                    level3.classList.remove('locked');
+                    level3.querySelector('.level-icon').textContent = '✍️';
                 } else {
-                    level3Card.classList.add('locked');
-                    level3Card.querySelector('.level-icon').textContent = '🔐';
+                    level3.classList.add('locked');
+                    level3.querySelector('.level-icon').textContent = '🔐';
                 }
                 
-                // المستوى الرابع يتطلب إنهاء 45 درس
                 if (completed >= 45) {
-                    level4Card.classList.remove('locked');
-                    level4Card.querySelector('.level-icon').textContent = '🏆';
+                    level4.classList.remove('locked');
+                    level4.querySelector('.level-icon').textContent = '🏆';
                 } else {
-                    level4Card.classList.add('locked');
-                    level4Card.querySelector('.level-icon').textContent = '🔐';
+                    level4.classList.add('locked');
+                    level4.querySelector('.level-icon').textContent = '🔐';
                 }
-
-                // تحديث الرسالة التحفيزية
-                const msgBox = document.getElementById('motivation-message');
+                
+                // رسائل تحفيزية متغيرة
                 const messages = [
-                    '« ابدأ بالحرف تكن فصيحاً »',
-                    '« الحرف نور والكلمة حياة »',
-                    '« بالعربية نطق الإنسان »',
-                    '« كل حرف تتعلمه يقربك للقرآن »',
-                    '« فصاحة اللسان من فصاحة الجنان »'
+                    '« ابْدَأْ بِالْحَرْفِ تَكُنْ فَصِيحًا »',
+                    '« الْحَرْفُ نُورٌ وَالْكَلِمَةُ حَيَاةٌ »',
+                    '« بِالْعَرَبِيَّةِ نَطَقَ الْإِنْسَانُ »',
+                    '« كُلُّ حَرْفٍ تَتَعَلَّمُهُ يُقَرِّبُكَ لِلْقُرْآنِ »',
+                    '« فَصَاحَةُ اللِّسَانِ مِنْ فَصَاحَةِ الْجَنَانِ »'
                 ];
                 const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-                msgBox.innerHTML = `<span>«</span> ${randomMsg.replace(/[«»]/g,'')} <span>»</span>`;
+                document.getElementById('motivation-message').innerHTML = `<span>«</span> ${randomMsg.replace(/[«»]/g,'')} <span>»</span>`;
             }
-
-            // تهيئة الصفحة
-            function init() {
-                // التأكد من وجود كائن التقدم
-                let progress = getProgress();
-                if (!progress.completedLessons) {
-                    progress.completedLessons = [];
-                    saveProgress(progress);
-                }
-                updateUI();
-
-                // إضافة مستمع لفتح الدروس (حتى لو ضغط على بطاقة مقفلة لن تعمل بسبب pointer-events)
-                // لكننا نضيف تأكيداً
-                const cards = document.querySelectorAll('.level-card');
-                cards.forEach(card => {
-                    card.addEventListener('click', function(e) {
-                        if (this.classList.contains('locked')) {
-                            e.preventDefault();
-                            // عرض رسالة تنبيه (صوت بشري فقط - نستخدم تنبيه نصي)
-                            alert('🔐 أكمل الدروس السابقة أولاً يا بطل.');
-                        }
-                    });
+            
+            // منع النقر على المستويات المقفلة
+            const cards = document.querySelectorAll('.level-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (this.classList.contains('locked')) {
+                        e.preventDefault();
+                        alert('🔐 أَكْمِلِ الدُّرُوسَ السَّابِقَةَ أَوَّلًا يَا بَطَلُ.');
+                    }
                 });
+            });
+            
+            // التأكد من وجود كائن التقدم
+            let progress = getProgress();
+            if (!progress.completedLessons) {
+                progress.completedLessons = [];
+                saveProgress(progress);
             }
-
-            // بدء التطبيق
-            init();
+            updateUI();
         })();
     </script>
-    
-    <!-- لن نستخدم أي موسيقى أو مؤثرات صناعية - فقط صوت بشري عند النقر على الدروس لاحقاً -->
+    <!-- لا توجد أي موسيقى أو مؤثرات صوتية، فقط صوت بشري فصيح سيتم إضافته لاحقاً -->
 </body>
-                      </html>
+</html>
+<!-- ================================================ -->
+<!-- الدرس (١): حَرْفُ الْأَلِفِ بِالْفَتْحَةِ (أَ)     -->
+<!-- ================================================ -->
+
+<!-- حاوية الدرس - ستظهر عند النقر على رابط المستوى الأول -->
+<div id="lesson-1-1" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        
+        <!-- زر العودة للرئيسية -->
+        <div style="margin-bottom: 20px;">
+            <button onclick="hideLesson('lesson-1-1')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلرَّئِيسِيَّةِ</button>
+        </div>
+
+        <!-- رأس الدرس -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37; text-shadow: 0 0 10px #D4AF37;">الدَّرْسُ الْأَوَّلُ</h2>
+            <p style="font-size: 18px; color: #E8D5A8; margin-top: 8px;">حَرْفُ الْأَلِفِ مَعَ الْفَتْحَةِ (أَ)</p>
+            <div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div>
+        </div>
+
+        <!-- الصورة التوضيحية المركزية (SVG) -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <svg width="200" height="180" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- إطار ذهبي -->
+                <rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4" opacity="0.8"/>
+                <rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/>
+                <!-- حرف الألف كبير مع الفتحة -->
+                <text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">أَ</text>
+                <!-- فتحة واضحة -->
+                <text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text>
+                <!-- تسمية -->
+                <text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">هَمْزَةٌ مَفْتُوحَةٌ</text>
+            </svg>
+        </div>
+
+        <!-- جملة نور البيان التوضيحية -->
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p>
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37; line-height: 1.5; letter-spacing: 4px;">أَلِفٌ فَتْحَةٌ أَ</p>
+            <p style="font-size: 18px; color: #C9B896; margin-top: 12px;">(هَمْزَةٌ مَفْتُوحَةٌ تُنْطَقُ "أَ")</p>
+        </div>
+
+        <!-- مثال كلمة تحتوي على الحرف -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;">
+            <span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span>
+            <div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px; box-shadow: 0 4px 0 #9E7B2B;">
+                <span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">أَسَدٌ</span>
+            </div>
+            <span style="font-size: 18px; color: #E8D5A8;">(أَ سَ دْ)</span>
+        </div>
+
+        <!-- تمرين تفاعلي: اختيار الصورة الصحيحة -->
+        <div style="margin: 30px 0 20px;">
+            <p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (أَ):</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+                <div class="quiz-option" data-correct="true" onclick="checkAnswer(this, true, 'lesson-1-1')" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أَسَدٌ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswer(this, false, 'lesson-1-1')" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَطَّةٌ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswer(this, false, 'lesson-1-1')" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قِطٌّ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswer(this, false, 'lesson-1-1')" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">شَمْسٌ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- رسالة التغذية الراجعة -->
+        <div id="feedback-1-1" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+
+        <!-- أزرار التحكم في الدرس -->
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-1', 1)" id="complete-btn-1-1" disabled style="flex: 2; background: #4A3720; border: none; color: #A58E6D; font-family: 'Cairo'; font-size: 20px; padding: 16px; border-radius: 50px; cursor: not-allowed; font-weight: bold; box-shadow: 0 4px 0 #2B1B0E;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('أَ')" style="flex: 1; background: #D4AF37; border: none; color: #1F140A; font-size: 22px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 0 #9E7B2B;">🔊 أَ</button>
+        </div>
+        <p style="font-size: 12px; color: #A58E6D; text-align: center; margin-top: 10px;">* اضْغَطْ عَلَى الْإِجَابَةِ الصَّحِيحَةِ لِتَتِمَّ تَفْعِيلَ زِرِّ الْإِكْمَالِ</p>
+    </div>
+</div>
+
+<script>
+    // دالة النطق (صوت بشري - Web Speech API مؤقتاً)
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ar-SA';
+            utterance.rate = 0.8;
+            utterance.pitch = 1.2;
+            // نستخدم صوت عربي إن وُجد
+            const voices = speechSynthesis.getVoices();
+            const arabicVoice = voices.find(v => v.lang.includes('ar'));
+            if (arabicVoice) utterance.voice = arabicVoice;
+            speechSynthesis.speak(utterance);
+        } else {
+            alert('صَوْتٌ بَشَرِيٌّ: "أَ" (يُفَضَّلُ اسْتِخْدَامُ مُتَصَفِّحٍ يَدْعَمُ النُّطْقَ)');
+        }
+    }
+
+    // متغير لتتبع إجابة السؤال التفاعلي
+    let lesson1Answered = false;
+
+    function checkAnswer(element, isCorrect, lessonId) {
+        if (lesson1Answered) return;
+        
+        const options = document.querySelectorAll(`#${lessonId} .quiz-option`);
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            opt.style.opacity = '0.7';
+        });
+
+        const feedbackDiv = document.getElementById('feedback-1-1');
+        const completeBtn = document.getElementById('complete-btn-1-1');
+
+        if (isCorrect) {
+            element.style.background = '#2E7D32';
+            element.style.borderColor = '#A5D6A7';
+            feedbackDiv.innerHTML = '✅ أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ.';
+            feedbackDiv.style.color = '#A5D6A7';
+            lesson1Answered = true;
+            completeBtn.disabled = false;
+            completeBtn.style.background = '#D4AF37';
+            completeBtn.style.color = '#1F140A';
+            completeBtn.style.cursor = 'pointer';
+        } else {
+            element.style.background = '#8B1E1E';
+            element.style.borderColor = '#EF9A9A';
+            feedbackDiv.innerHTML = '❌ حَاوِلْ مَرَّةً أُخْرَى. اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (أَ).';
+            feedbackDiv.style.color = '#EF9A9A';
+            // إعادة التفعيل بعد ثانية
+            setTimeout(() => {
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'auto';
+                    opt.style.opacity = '1';
+                    opt.style.background = '#1F140A';
+                    opt.style.borderColor = '#6B4F2C';
+                });
+                feedbackDiv.innerHTML = '';
+            }, 1500);
+        }
+    }
+
+    // إخفاء الدرس والعودة للرئيسية
+    function hideLesson(lessonId) {
+        document.getElementById(lessonId).style.display = 'none';
+        document.querySelector('.app-container').style.display = 'block';
+        // تحديث شريط التقدم في الرئيسية
+        if (typeof updateMainProgress === 'function') updateMainProgress();
+    }
+
+    // إكمال الدرس وتسجيل التقدم
+    function completeLesson(lessonId, lessonNumber) {
+        // حفظ التقدم في localStorage
+        const STORAGE_KEY = 'yaarub_progress';
+        let progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completedLessons: [] };
+        if (!progress.completedLessons.includes(lessonNumber)) {
+            progress.completedLessons.push(lessonNumber);
+            progress.lastActive = new Date().toISOString();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+        
+        // عرض رسالة نجاح
+        alert('🎉 مَبْرُوكٌ! أَكْمَلْتَ الدَّرْسَ الْأَوَّلَ. اِنْتَقِلْ لِلدَّرْسِ التَّالِي.');
+        
+        // العودة للرئيسية
+        hideLesson(lessonId);
+        
+        // تحديث واجهة الرئيسية
+        if (typeof updateMainProgress === 'function') updateMainProgress();
+    }
+
+    // ربط الدروس بالصفحة الرئيسية: عند النقر على "المستوى الأول" نظهر الدرس
+    document.addEventListener('DOMContentLoaded', function() {
+        const level1Card = document.getElementById('level-1-card');
+        if (level1Card) {
+            level1Card.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.app-container').style.display = 'none';
+                document.getElementById('lesson-1-1').style.display = 'block';
+            });
+        }
+    });
+</script>
+
+<!-- نهاية الدرس الأول -->
+<!-- ================================================ -->
+<!-- الدرس (٢): حَرْفُ الْبَاءِ بِالْفَتْحَةِ (بَ)     -->
+<!-- ================================================ -->
+
+<div id="lesson-1-2" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        
+        <!-- زر العودة للرئيسية -->
+        <div style="margin-bottom: 20px;">
+            <button onclick="hideLesson('lesson-1-2')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلرَّئِيسِيَّةِ</button>
+        </div>
+
+        <!-- رأس الدرس -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37; text-shadow: 0 0 10px #D4AF37;">الدَّرْسُ الثَّانِي</h2>
+            <p style="font-size: 18px; color: #E8D5A8; margin-top: 8px;">حَرْفُ الْبَاءِ مَعَ الْفَتْحَةِ (بَ)</p>
+            <div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div>
+        </div>
+
+        <!-- الصورة التوضيحية المركزية (SVG) -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <svg width="200" height="180" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4" opacity="0.8"/>
+                <rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/>
+                <text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">بَ</text>
+                <text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text>
+                <text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">بَاءٌ مَفْتُوحَةٌ</text>
+            </svg>
+        </div>
+
+        <!-- جملة نور البيان التوضيحية -->
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p>
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37; line-height: 1.5; letter-spacing: 4px;">بَاءٌ فَتْحَةٌ بَ</p>
+            <p style="font-size: 18px; color: #C9B896; margin-top: 12px;">(بَاءٌ مَفْتُوحَةٌ تُنْطَقُ "بَ")</p>
+        </div>
+
+        <!-- مثال كلمة تحتوي على الحرف -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;">
+            <span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span>
+            <div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px; box-shadow: 0 4px 0 #9E7B2B;">
+                <span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">بَطَّةٌ</span>
+            </div>
+            <span style="font-size: 18px; color: #E8D5A8;">(بَ طْ طَ ةٌ)</span>
+        </div>
+
+        <!-- تمرين تفاعلي: اختيار الصورة الصحيحة -->
+        <div style="margin: 30px 0 20px;">
+            <p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (بَ):</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+                <div class="quiz-option" data-correct="true" onclick="checkAnswerLesson2(this, true)" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَطَّةٌ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswerLesson2(this, false)" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أَسَدٌ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswerLesson2(this, false)" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span>
+                </div>
+                <div class="quiz-option" data-correct="false" onclick="checkAnswerLesson2(this, false)" style="background: #1F140A; border: 2px solid #6B4F2C; border-radius: 20px; padding: 16px; text-align: center; cursor: pointer; transition: 0.1s;">
+                    <span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قَلَمٌ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- رسالة التغذية الراجعة -->
+        <div id="feedback-1-2" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+
+        <!-- أزرار التحكم في الدرس -->
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-2', 2)" id="complete-btn-1-2" disabled style="flex: 2; background: #4A3720; border: none; color: #A58E6D; font-family: 'Cairo'; font-size: 20px; padding: 16px; border-radius: 50px; cursor: not-allowed; font-weight: bold; box-shadow: 0 4px 0 #2B1B0E;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('بَ')" style="flex: 1; background: #D4AF37; border: none; color: #1F140A; font-size: 22px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 0 #9E7B2B;">🔊 بَ</button>
+        </div>
+        <p style="font-size: 12px; color: #A58E6D; text-align: center; margin-top: 10px;">* اضْغَطْ عَلَى الْإِجَابَةِ الصَّحِيحَةِ لِتَتِمَّ تَفْعِيلَ زِرِّ الْإِكْمَالِ</p>
+    </div>
+</div>
+
+<script>
+    // متغير خاص بالدرس الثاني
+    let lesson2Answered = false;
+
+    function checkAnswerLesson2(element, isCorrect) {
+        if (lesson2Answered) return;
+        
+        const options = document.querySelectorAll('#lesson-1-2 .quiz-option');
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            opt.style.opacity = '0.7';
+        });
+
+        const feedbackDiv = document.getElementById('feedback-1-2');
+        const completeBtn = document.getElementById('complete-btn-1-2');
+
+        if (isCorrect) {
+            element.style.background = '#2E7D32';
+            element.style.borderColor = '#A5D6A7';
+            feedbackDiv.innerHTML = '✅ أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ.';
+            feedbackDiv.style.color = '#A5D6A7';
+            lesson2Answered = true;
+            completeBtn.disabled = false;
+            completeBtn.style.background = '#D4AF37';
+            completeBtn.style.color = '#1F140A';
+            completeBtn.style.cursor = 'pointer';
+        } else {
+            element.style.background = '#8B1E1E';
+            element.style.borderColor = '#EF9A9A';
+            feedbackDiv.innerHTML = '❌ حَاوِلْ مَرَّةً أُخْرَى. اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (بَ).';
+            feedbackDiv.style.color = '#EF9A9A';
+            setTimeout(() => {
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'auto';
+                    opt.style.opacity = '1';
+                    opt.style.background = '#1F140A';
+                    opt.style.borderColor = '#6B4F2C';
+                });
+                feedbackDiv.innerHTML = '';
+            }, 1500);
+        }
+    }
+
+    // ربط الدرس الثاني بالصفحة الرئيسية (يتم تنفيذه عند تحميل الصفحة)
+    document.addEventListener('DOMContentLoaded', function() {
+        // التأكد من وجود دالة الربط (سيتم إضافتها في النهاية)
+        if (typeof addLessonLink === 'function') {
+            addLessonLink('lesson-1-2', 2);
+        } else {
+            // رابط مؤقت: عند النقر على المستوى الأول سيظهر الدرس الأول فقط،
+            // لكننا سنضيف آلية تنقل بين الدروس لاحقاً
+        }
+    });
+
+    // سنضيف لاحقاً دالة موحدة لإدارة الدروس
+</script>
+
+<!-- نهاية الدرس الثاني -->
+<!-- ================================================ -->
+<!-- قَائِمَةُ دُرُوسِ الْمُسْتَوَى الْأَوَّلِ           -->
+<!-- ================================================ -->
+
+<div id="level-1-menu" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        
+        <!-- زر العودة للرئيسية -->
+        <div style="margin-bottom: 20px;">
+            <button onclick="hideLevelMenu()" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلرَّئِيسِيَّةِ</button>
+        </div>
+
+        <!-- رأس القائمة -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37; text-shadow: 0 0 10px #D4AF37;">دُرُوسُ الْمُسْتَوَى الْأَوَّلِ</h2>
+            <p style="font-size: 18px; color: #E8D5A8; margin-top: 8px;">الْحُرُوفُ مَعَ الْفَتْحَةِ (٢٨ حَرْفًا)</p>
+            <div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div>
+        </div>
+
+        <!-- شبكة أزرار الدروس (صفوف من ٤ أزرار) -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0;">
+            <!-- سنقوم بتوليد ٢٨ زرًا ديناميكيًا عبر JavaScript لتوفير المساحة -->
+        </div>
+        <div id="lesson-buttons-container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0;"></div>
+
+        <!-- شريط تقدم المستوى -->
+        <div style="margin: 20px 0;">
+            <div style="display: flex; justify-content: space-between; color: #E8D5A8; font-size: 14px; margin-bottom: 6px;">
+                <span>تَقَدُّمُكَ فِي الْمُسْتَوَى</span>
+                <span id="level1-progress-text">٠/٢٨</span>
+            </div>
+            <div style="height: 8px; background: #1F140A; border-radius: 20px; border: 1px solid #6B4F2C; overflow: hidden;">
+                <div id="level1-progress-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #B8860B, #D4AF37, #FFDF73); border-radius: 20px; transition: width 0.3s;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- نِظَامُ التَّنَقُّلِ وَإِدَارَةِ الدُّرُوسِ       -->
+<!-- ================================================ -->
+
+<script>
+    // قائمة الحروف العربية مع الفتحة (٢٨ حرفًا)
+    const arabicLetters = [
+        { name: 'أَلِف', symbol: 'أَ', lesson: 1 },
+        { name: 'بَاء', symbol: 'بَ', lesson: 2 },
+        { name: 'تَاء', symbol: 'تَ', lesson: 3 },
+        { name: 'ثَاء', symbol: 'ثَ', lesson: 4 },
+        { name: 'جِيم', symbol: 'جَ', lesson: 5 },
+        { name: 'حَاء', symbol: 'حَ', lesson: 6 },
+        { name: 'خَاء', symbol: 'خَ', lesson: 7 },
+        { name: 'دَال', symbol: 'دَ', lesson: 8 },
+        { name: 'ذَال', symbol: 'ذَ', lesson: 9 },
+        { name: 'رَاء', symbol: 'رَ', lesson: 10 },
+        { name: 'زَاي', symbol: 'زَ', lesson: 11 },
+        { name: 'سِين', symbol: 'سَ', lesson: 12 },
+        { name: 'شِين', symbol: 'شَ', lesson: 13 },
+        { name: 'صَاد', symbol: 'صَ', lesson: 14 },
+        { name: 'ضَاد', symbol: 'ضَ', lesson: 15 },
+        { name: 'طَاء', symbol: 'طَ', lesson: 16 },
+        { name: 'ظَاء', symbol: 'ظَ', lesson: 17 },
+        { name: 'عَيْن', symbol: 'عَ', lesson: 18 },
+        { name: 'غَيْن', symbol: 'غَ', lesson: 19 },
+        { name: 'فَاء', symbol: 'فَ', lesson: 20 },
+        { name: 'قَاف', symbol: 'قَ', lesson: 21 },
+        { name: 'كَاف', symbol: 'كَ', lesson: 22 },
+        { name: 'لَام', symbol: 'لَ', lesson: 23 },
+        { name: 'مِيم', symbol: 'مَ', lesson: 24 },
+        { name: 'نُون', symbol: 'نَ', lesson: 25 },
+        { name: 'هَاء', symbol: 'هَ', lesson: 26 },
+        { name: 'وَاو', symbol: 'وَ', lesson: 27 },
+        { name: 'يَاء', symbol: 'يَ', lesson: 28 }
+    ];
+
+    // دالة بناء أزرار الدروس في قائمة المستوى الأول
+    function buildLessonButtons() {
+        const container = document.getElementById('lesson-buttons-container');
+        if (!container) return;
+        
+        const progress = JSON.parse(localStorage.getItem('yaarub_progress')) || { completedLessons: [] };
+        const completed = progress.completedLessons || [];
+        
+        container.innerHTML = '';
+        
+        arabicLetters.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.textContent = letter.symbol;
+            btn.style.fontFamily = "'Amiri', serif";
+            btn.style.fontSize = '28px';
+            btn.style.fontWeight = 'bold';
+            btn.style.padding = '12px 0';
+            btn.style.borderRadius = '20px';
+            btn.style.border = '1px solid #D4AF37';
+            btn.style.cursor = 'pointer';
+            btn.style.boxShadow = '0 4px 0 #6B4F2C';
+            btn.style.transition = '0.1s';
+            
+            // لون الزر حسب حالة الإكمال
+            if (completed.includes(letter.lesson)) {
+                btn.style.background = '#D4AF37';
+                btn.style.color = '#1F140A';
+            } else {
+                btn.style.background = '#1F140A';
+                btn.style.color = '#D4AF37';
+            }
+            
+            // فتح الدرس المناسب عند النقر
+            btn.onclick = function() {
+                openLessonByNumber(letter.lesson);
+            };
+            
+            container.appendChild(btn);
+        });
+        
+        // تحديث شريط التقدم
+        const completedInLevel = completed.filter(l => l >= 1 && l <= 28).length;
+        const percent = (completedInLevel / 28) * 100;
+        document.getElementById('level1-progress-text').textContent = `${completedInLevel}/٢٨`;
+        document.getElementById('level1-progress-fill').style.width = percent + '%';
+    }
+
+    // دالة فتح الدرس حسب رقمه
+    function openLessonByNumber(lessonNum) {
+        // إخفاء جميع الواجهات أولاً
+        document.querySelector('.app-container').style.display = 'none';
+        document.getElementById('level-1-menu').style.display = 'none';
+        const allLessons = document.querySelectorAll('[id^="lesson-1-"]');
+        allLessons.forEach(l => l.style.display = 'none');
+        
+        // إظهار الدرس المطلوب
+        const lessonId = `lesson-1-${lessonNum}`;
+        const lessonElement = document.getElementById(lessonId);
+        if (lessonElement) {
+            lessonElement.style.display = 'block';
+        } else {
+            alert('هَذَا الدَّرْسُ غَيْرُ مُتَاحٍ بَعْدُ. سَنُضِيفُهُ قَرِيبًا إِنْ شَاءَ اللَّهُ.');
+            document.querySelector('.app-container').style.display = 'block';
+        }
+    }
+
+    // إخفاء قائمة المستوى والعودة للرئيسية
+    function hideLevelMenu() {
+        document.getElementById('level-1-menu').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'block';
+    }
+
+    // ربط بطاقة المستوى الأول بقائمة الدروس
+    document.addEventListener('DOMContentLoaded', function() {
+        const level1Card = document.getElementById('level-1-card');
+        if (level1Card) {
+            level1Card.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.app-container').style.display = 'none';
+                document.getElementById('level-1-menu').style.display = 'block';
+                buildLessonButtons(); // بناء الأزرار عند الفتح
+            });
+        }
+        
+        // تحديث التقدم في الرئيسية (دالة مساعدة)
+        window.updateMainProgress = function() {
+            const progress = JSON.parse(localStorage.getItem('yaarub_progress')) || { completedLessons: [] };
+            const completed = progress.completedLessons || [];
+            const totalLessons = 70;
+            const percent = Math.min(100, Math.round((completed.length / totalLessons) * 100));
+            
+            const percentEl = document.getElementById('progress-percent');
+            const fillEl = document.getElementById('progress-bar-fill');
+            if (percentEl) percentEl.textContent = percent + '٪';
+            if (fillEl) fillEl.style.width = percent + '%';
+            
+            // فتح المستويات
+            const level2 = document.getElementById('level-2-card');
+            const level3 = document.getElementById('level-3-card');
+            const level4 = document.getElementById('level-4-card');
+            
+            if (completed.length >= 10) {
+                if (level2) { level2.classList.remove('locked'); level2.querySelector('.level-icon').textContent = '📚'; }
+            }
+            if (completed.length >= 25) {
+                if (level3) { level3.classList.remove('locked'); level3.querySelector('.level-icon').textContent = '✍️'; }
+            }
+            if (completed.length >= 45) {
+                if (level4) { level4.classList.remove('locked'); level4.querySelector('.level-icon').textContent = '🏆'; }
+            }
+        };
+        
+        // تحديث أولي
+        updateMainProgress();
+    });
+
+    // تعديل دالة completeLesson لتحديث القائمة تلقائياً
+    const originalComplete = completeLesson;
+    completeLesson = function(lessonId, lessonNumber) {
+        const STORAGE_KEY = 'yaarub_progress';
+        let progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completedLessons: [] };
+        if (!progress.completedLessons.includes(lessonNumber)) {
+            progress.completedLessons.push(lessonNumber);
+            progress.lastActive = new Date().toISOString();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+        
+        alert('🎉 مَبْرُوكٌ! أَكْمَلْتَ الدَّرْسَ. اِنْتَقِلْ لِلدَّرْسِ التَّالِي.');
+        
+        // العودة للقائمة بدلاً من الرئيسية مباشرة
+        document.getElementById(lessonId).style.display = 'none';
+        document.getElementById('level-1-menu').style.display = 'block';
+        buildLessonButtons(); // تحديث الأزرار
+        
+        if (typeof updateMainProgress === 'function') updateMainProgress();
+    };
+</script>
+
+<!-- نهاية نظام التنقل وقائمة الدروس -->
+<!-- ================================================ -->
+<!-- الدرس (٣): حَرْفُ التَّاءِ بِالْفَتْحَةِ (تَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-3" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-3')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّالِثُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ التَّاءِ مَعَ الْفَتْحَةِ (تَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">تَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">تَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">تَاءٌ فَتْحَةٌ تَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">تُفَّاحٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (تَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-3', 3)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-3', 3)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَطَّةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-3', 3)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أَسَدٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-3', 3)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">جَمَلٌ</span></div>
+        </div></div>
+        <div id="feedback-1-3" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-3', 3)" id="complete-btn-1-3" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('تَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 تَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٤): حَرْفُ الثَّاءِ بِالْفَتْحَةِ (ثَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-4" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-4')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الرَّابِعُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الثَّاءِ مَعَ الْفَتْحَةِ (ثَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">ثَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">ثَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">ثَاءٌ فَتْحَةٌ ثَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">ثَعْلَبٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (ثَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-4', 4)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَعْلَبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-4', 4)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-4', 4)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَطَّةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-4', 4)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">حِصَانٌ</span></div>
+        </div></div>
+        <div id="feedback-1-4" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-4', 4)" id="complete-btn-1-4" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('ثَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 ثَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٥): حَرْفُ الْجِيمِ بِالْفَتْحَةِ (جَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-5" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-5')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْخَامِسُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْجِيمِ مَعَ الْفَتْحَةِ (جَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">جَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">جِيمٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">جِيمٌ فَتْحَةٌ جَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">جَمَلٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (جَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-5', 5)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">جَمَلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-5', 5)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَعْلَبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-5', 5)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-5', 5)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أَسَدٌ</span></div>
+        </div></div>
+        <div id="feedback-1-5" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-5', 5)" id="complete-btn-1-5" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('جَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 جَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٦): حَرْفُ الْحَاءِ بِالْفَتْحَةِ (حَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-6" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-6')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّادِسُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْحَاءِ مَعَ الْفَتْحَةِ (حَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">حَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">حَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">حَاءٌ فَتْحَةٌ حَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">حِصَانٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (حَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-6', 6)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">حِصَانٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-6', 6)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">جَمَلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-6', 6)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَعْلَبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-6', 6)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span></div>
+        </div></div>
+        <div id="feedback-1-6" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-6', 6)" id="complete-btn-1-6" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('حَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 حَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٧): حَرْفُ الْخَاءِ بِالْفَتْحَةِ (خَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-7" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-7')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّابِعُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْخَاءِ مَعَ الْفَتْحَةِ (خَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">خَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">خَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">خَاءٌ فَتْحَةٌ خَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">خُبْزٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (خَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-7', 7)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">خُبْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-7', 7)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">حِصَانٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-7', 7)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">جَمَلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-7', 7)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَعْلَبٌ</span></div>
+        </div></div>
+        <div id="feedback-1-7" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-7', 7)" id="complete-btn-1-7" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('خَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 خَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٨): حَرْفُ الدَّالِ بِالْفَتْحَةِ (دَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-8" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-8')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّامِنُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الدَّالِ مَعَ الْفَتْحَةِ (دَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">دَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">دَالٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">دَالٌ فَتْحَةٌ دَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">دَجَاجَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (دَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-8', 8)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">دَجَاجَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-8', 8)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">خُبْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-8', 8)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">حِصَانٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-8', 8)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">جَمَلٌ</span></div>
+        </div></div>
+        <div id="feedback-1-8" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-8', 8)" id="complete-btn-1-8" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('دَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 دَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٩): حَرْفُ الذَّالِ بِالْفَتْحَةِ (ذَ)     -->
+<!-- ================================================ -->
+<div id="lesson-1-9" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-9')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ التَّاسِعُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الذَّالِ مَعَ الْفَتْحَةِ (ذَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">ذَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">ذَالٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">ذَالٌ فَتْحَةٌ ذَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">ذِئْبٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (ذَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-9', 9)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ذِئْبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-9', 9)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">دَجَاجَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-9', 9)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">خُبْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-9', 9)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">حِصَانٌ</span></div>
+        </div></div>
+        <div id="feedback-1-9" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-9', 9)" id="complete-btn-1-9" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('ذَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 ذَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٠): حَرْفُ الرَّاءِ بِالْفَتْحَةِ (رَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-10" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-10')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْعَاشِرُ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الرَّاءِ مَعَ الْفَتْحَةِ (رَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">رَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">رَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">رَاءٌ فَتْحَةٌ رَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">رَجُلٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (رَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-10', 10)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">رَجُلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-10', 10)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ذِئْبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-10', 10)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">دَجَاجَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-10', 10)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">خُبْزٌ</span></div>
+        </div></div>
+        <div id="feedback-1-10" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-10', 10)" id="complete-btn-1-10" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('رَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 رَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- دالة مساعدة عامة للتحقق من الإجابة               -->
+<!-- ================================================ -->
+<script>
+    // كائن لتخزين حالة الإجابة لكل درس
+    const lessonAnsweredState = {};
+
+    function checkAnswerGeneric(element, isCorrect, lessonId, lessonNum) {
+        if (lessonAnsweredState[lessonNum]) return;
+        
+        const lessonDiv = document.getElementById(lessonId);
+        const options = lessonDiv.querySelectorAll('.quiz-option');
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            opt.style.opacity = '0.7';
+        });
+
+        const feedbackDiv = document.getElementById(`feedback-1-${lessonNum}`);
+        const completeBtn = document.getElementById(`complete-btn-1-${lessonNum}`);
+
+        if (isCorrect) {
+            element.style.background = '#2E7D32';
+            element.style.borderColor = '#A5D6A7';
+            feedbackDiv.innerHTML = '✅ أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ.';
+            feedbackDiv.style.color = '#A5D6A7';
+            lessonAnsweredState[lessonNum] = true;
+            completeBtn.disabled = false;
+            completeBtn.style.background = '#D4AF37';
+            completeBtn.style.color = '#1F140A';
+            completeBtn.style.cursor = 'pointer';
+        } else {
+            element.style.background = '#8B1E1E';
+            element.style.borderColor = '#EF9A9A';
+            feedbackDiv.innerHTML = '❌ حَاوِلْ مَرَّةً أُخْرَى.';
+            feedbackDiv.style.color = '#EF9A9A';
+            setTimeout(() => {
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'auto';
+                    opt.style.opacity = '1';
+                    opt.style.background = '#1F140A';
+                    opt.style.borderColor = '#6B4F2C';
+                });
+                feedbackDiv.innerHTML = '';
+            }, 1500);
+        }
+    }
+
+    // تعديل دالة hideLesson لتتعامل مع جميع الدروس
+    function hideLesson(lessonId) {
+        document.getElementById(lessonId).style.display = 'none';
+        document.getElementById('level-1-menu').style.display = 'block';
+        buildLessonButtons();
+        if (typeof updateMainProgress === 'function') updateMainProgress();
+    }
+</script>
+
+<!-- نهاية الدروس من ٣ إلى ١٠ -->
+<!-- ================================================ -->
+<!-- الدرس (١١): حَرْفُ الزَّايِ بِالْفَتْحَةِ (زَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-11" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-11')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْحَادِيَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الزَّايِ مَعَ الْفَتْحَةِ (زَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">زَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">زَايٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">زَايٌ فَتْحَةٌ زَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">زَهْرَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (زَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-11', 11)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">زَهْرَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-11', 11)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">رَجُلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-11', 11)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ذِئْبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-11', 11)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">دَجَاجَةٌ</span></div>
+        </div></div>
+        <div id="feedback-1-11" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-11', 11)" id="complete-btn-1-11" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('زَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 زَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٢): حَرْفُ السِّينِ بِالْفَتْحَةِ (سَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-12" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-12')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّانِيَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ السِّينِ مَعَ الْفَتْحَةِ (سَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">سَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">سِينٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">سِينٌ فَتْحَةٌ سَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">سَمَكَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (سَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-12', 12)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">سَمَكَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-12', 12)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">زَهْرَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-12', 12)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">رَجُلٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-12', 12)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ذِئْبٌ</span></div>
+        </div></div>
+        <div id="feedback-1-12" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-12', 12)" id="complete-btn-1-12" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('سَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 سَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٣): حَرْفُ الشِّينِ بِالْفَتْحَةِ (شَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-13" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-13')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّالِثَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الشِّينِ مَعَ الْفَتْحَةِ (شَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">شَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">شِينٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">شِينٌ فَتْحَةٌ شَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">شَمْسٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (شَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-13', 13)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">شَمْسٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-13', 13)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">سَمَكَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-13', 13)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">زَهْرَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-13', 13)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">رَجُلٌ</span></div>
+        </div></div>
+        <div id="feedback-1-13" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-13', 13)" id="complete-btn-1-13" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('شَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 شَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٤): حَرْفُ الصَّادِ بِالْفَتْحَةِ (صَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-14" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-14')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الرَّابِعَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الصَّادِ مَعَ الْفَتْحَةِ (صَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">صَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">صَادٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">صَادٌ فَتْحَةٌ صَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">صَقْرٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (صَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-14', 14)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">صَقْرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-14', 14)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">شَمْسٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-14', 14)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">سَمَكَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-14', 14)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">زَهْرَةٌ</span></div>
+        </div></div>
+        <div id="feedback-1-14" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-14', 14)" id="complete-btn-1-14" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('صَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 صَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٥): حَرْفُ الضَّادِ بِالْفَتْحَةِ (ضَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-15" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-15')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْخَامِسَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الضَّادِ مَعَ الْفَتْحَةِ (ضَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">ضَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">ضَادٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">ضَادٌ فَتْحَةٌ ضَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">ضِفْدَعٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (ضَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-15', 15)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ضِفْدَعٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-15', 15)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">صَقْرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-15', 15)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">شَمْسٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-15', 15)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">سَمَكَةٌ</span></div>
+        </div></div>
+        <div id="feedback-1-15" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-15', 15)" id="complete-btn-1-15" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('ضَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 ضَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٦): حَرْفُ الطَّاءِ بِالْفَتْحَةِ (طَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-16" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-16')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّادِسَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الطَّاءِ مَعَ الْفَتْحَةِ (طَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">طَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">طَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">طَاءٌ فَتْحَةٌ طَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">طَائِرٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (طَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-16', 16)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">طَائِرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-16', 16)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ضِفْدَعٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-16', 16)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">صَقْرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-16', 16)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">شَمْسٌ</span></div>
+        </div></div>
+        <div id="feedback-1-16" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-16', 16)" id="complete-btn-1-16" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('طَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 طَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- نهاية الدروس من ١١ إلى ١٦ -->
+<!-- ================================================ -->
+<!-- الدرس (١٧): حَرْفُ الظَّاءِ بِالْفَتْحَةِ (ظَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-17" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-17')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّابِعَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الظَّاءِ مَعَ الْفَتْحَةِ (ظَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">ظَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">ظَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">ظَاءٌ فَتْحَةٌ ظَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">ظَبْيٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (ظَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-17', 17)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ظَبْيٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-17', 17)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">طَائِرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-17', 17)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ضِفْدَعٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-17', 17)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">صَقْرٌ</span></div>
+        </div></div>
+        <div id="feedback-1-17" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-17', 17)" id="complete-btn-1-17" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('ظَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 ظَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٨): حَرْفُ الْعَيْنِ بِالْفَتْحَةِ (عَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-18" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-18')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّامِنَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْعَيْنِ مَعَ الْفَتْحَةِ (عَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">عَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">عَيْنٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">عَيْنٌ فَتْحَةٌ عَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">عَصِيرٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (عَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-18', 18)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">عَصِيرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-18', 18)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ظَبْيٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-18', 18)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">طَائِرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-18', 18)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ضِفْدَعٌ</span></div>
+        </div></div>
+        <div id="feedback-1-18" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-18', 18)" id="complete-btn-1-18" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('عَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 عَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (١٩): حَرْفُ الْغَيْنِ بِالْفَتْحَةِ (غَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-19" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-19')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ التَّاسِعَ عَشَرَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْغَيْنِ مَعَ الْفَتْحَةِ (غَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">غَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">غَيْنٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">غَيْنٌ فَتْحَةٌ غَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">غُرَابٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (غَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-19', 19)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">غُرَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-19', 19)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">عَصِيرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-19', 19)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ظَبْيٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-19', 19)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">طَائِرٌ</span></div>
+        </div></div>
+        <div id="feedback-1-19" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-19', 19)" id="complete-btn-1-19" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('غَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 غَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٠): حَرْفُ الْفَاءِ بِالْفَتْحَةِ (فَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-20" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-20')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْفَاءِ مَعَ الْفَتْحَةِ (فَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">فَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">فَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">فَاءٌ فَتْحَةٌ فَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">فَرَاشَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (فَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-20', 20)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">فَرَاشَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-20', 20)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">غُرَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-20', 20)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">عَصِيرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-20', 20)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ظَبْيٌ</span></div>
+        </div></div>
+        <div id="feedback-1-20" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-20', 20)" id="complete-btn-1-20" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('فَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 فَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢١): حَرْفُ الْقَافِ بِالْفَتْحَةِ (قَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-21" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-21')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْحَادِي وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْقَافِ مَعَ الْفَتْحَةِ (قَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">قَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">قَافٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">قَافٌ فَتْحَةٌ قَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">قَلَمٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (قَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-21', 21)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قَلَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-21', 21)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">فَرَاشَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-21', 21)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">غُرَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-21', 21)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">عَصِيرٌ</span></div>
+        </div></div>
+        <div id="feedback-1-21" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-21', 21)" id="complete-btn-1-21" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('قَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 قَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٢): حَرْفُ الْكَافِ بِالْفَتْحَةِ (كَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-22" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-22')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّانِي وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْكَافِ مَعَ الْفَتْحَةِ (كَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">كَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">كَافٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">كَافٌ فَتْحَةٌ كَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">كِتَابٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (كَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-22', 22)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">كِتَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-22', 22)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قَلَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-22', 22)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">فَرَاشَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-22', 22)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">غُرَابٌ</span></div>
+        </div></div>
+        <div id="feedback-1-22" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-22', 22)" id="complete-btn-1-22" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('كَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 كَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- نهاية الدروس من ١٧ إلى ٢٢ -->
+<!-- ================================================ -->
+<!-- الدرس (٢٣): حَرْفُ اللَّامِ بِالْفَتْحَةِ (لَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-23" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-23')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّالِثُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ اللَّامِ مَعَ الْفَتْحَةِ (لَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">لَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">لَامٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">لَامٌ فَتْحَةٌ لَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">لَيْمُونٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (لَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-23', 23)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">لَيْمُونٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-23', 23)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">كِتَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-23', 23)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قَلَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-23', 23)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">فَرَاشَةٌ</span></div>
+        </div></div>
+        <div id="feedback-1-23" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-23', 23)" id="complete-btn-1-23" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('لَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 لَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٤): حَرْفُ الْمِيمِ بِالْفَتْحَةِ (مَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-24" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-24')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الرَّابِعُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْمِيمِ مَعَ الْفَتْحَةِ (مَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">مَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">مِيمٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">مِيمٌ فَتْحَةٌ مَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">مَوْزٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (مَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-24', 24)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">مَوْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-24', 24)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">لَيْمُونٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-24', 24)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">كِتَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-24', 24)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">قَلَمٌ</span></div>
+        </div></div>
+        <div id="feedback-1-24" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-24', 24)" id="complete-btn-1-24" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('مَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 مَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٥): حَرْفُ النُّونِ بِالْفَتْحَةِ (نَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-25" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-25')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْخَامِسُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ النُّونِ مَعَ الْفَتْحَةِ (نَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">نَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">نُونٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">نُونٌ فَتْحَةٌ نَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">نَجْمَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (نَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-25', 25)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">نَجْمَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-25', 25)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">مَوْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-25', 25)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">لَيْمُونٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-25', 25)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">كِتَابٌ</span></div>
+        </div></div>
+        <div id="feedback-1-25" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-25', 25)" id="complete-btn-1-25" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('نَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 نَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٦): حَرْفُ الْهَاءِ بِالْفَتْحَةِ (هَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-26" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-26')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّادِسُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْهَاءِ مَعَ الْفَتْحَةِ (هَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">هَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">هَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">هَاءٌ فَتْحَةٌ هَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">هَرَمٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (هَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-26', 26)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">هَرَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-26', 26)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">نَجْمَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-26', 26)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">مَوْزٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-26', 26)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">لَيْمُونٌ</span></div>
+        </div></div>
+        <div id="feedback-1-26" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-26', 26)" id="complete-btn-1-26" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('هَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 هَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٧): حَرْفُ الْوَاوِ بِالْفَتْحَةِ (وَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-27" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-27')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ السَّابِعُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْوَاوِ مَعَ الْفَتْحَةِ (وَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">وَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">وَاوٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">وَاوٌ فَتْحَةٌ وَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">وَرْدَةٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (وَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-27', 27)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">وَرْدَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-27', 27)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">هَرَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-27', 27)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">نَجْمَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-27', 27)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">مَوْزٌ</span></div>
+        </div></div>
+        <div id="feedback-1-27" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-27', 27)" id="complete-btn-1-27" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('وَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 وَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٨): حَرْفُ الْيَاءِ بِالْفَتْحَةِ (يَ)    -->
+<!-- ================================================ -->
+<div id="lesson-1-28" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-1-28')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّامِنُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">حَرْفُ الْيَاءِ مَعَ الْفَتْحَةِ (يَ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">يَ</text><text x="100" y="55" font-family="Cairo, sans-serif" font-size="36" fill="#FFDF73" text-anchor="middle">ﹷ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">يَاءٌ مَفْتُوحَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">يَاءٌ فَتْحَةٌ يَ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">يَدٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَبْدَأُ بِـ (يَ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-1-28', 28)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">يَدٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-28', 28)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">وَرْدَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-28', 28)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">هَرَمٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-1-28', 28)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">نَجْمَةٌ</span></div>
+        </div></div>
+        <div id="feedback-1-28" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-1-28', 28)" id="complete-btn-1-28" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('يَ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 يَ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- تَحْدِيثٌ نِهَائِيٌّ لِقَائِمَةِ الدُّرُوسِ        -->
+<!-- ================================================ -->
+<script>
+    // تأكيد تحديث مصفوفة الحروف لتشمل جميع الدروس (موجودة مسبقاً في الرسالة رقم ٤)
+    // هذه الدالة تضمن أن أزرار القائمة ستفتح الدروس الجديدة بشكل صحيح
+    document.addEventListener('DOMContentLoaded', function() {
+        // إذا تم تحميل الصفحة وكانت قائمة الدروس مبنية، نعيد بنائها لضمان تحديث الروابط
+        if (typeof buildLessonButtons === 'function') {
+            // لا شيء إضافي، الدالة الموجودة تعمل بشكل مثالي مع الدروس الجديدة
+        }
+        
+        // تحديث رسالة تحفيزية عند إكمال المستوى الأول
+        const originalComplete = completeLesson;
+        completeLesson = function(lessonId, lessonNumber) {
+            const STORAGE_KEY = 'yaarub_progress';
+            let progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completedLessons: [] };
+            if (!progress.completedLessons.includes(lessonNumber)) {
+                progress.completedLessons.push(lessonNumber);
+                progress.lastActive = new Date().toISOString();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+            }
+            
+            // رسالة خاصة عند إكمال الدرس 28 (نهاية المستوى الأول)
+            if (lessonNumber === 28) {
+                alert('🎉🎉 مَبْرُوكٌ! أَكْمَلْتَ الْمُسْتَوَى الْأَوَّلَ بِالْكَامِلِ! أَنْتَ الْآنَ تَعْرِفُ جَمِيعَ الْحُرُوفِ مَعَ الْفَتْحَةِ. اِنْتَقِلْ لِلْمُسْتَوَى الثَّانِي لِتَتَعَلَّمَ الْمُدُودَ وَالسُّكُونَ.');
+            } else {
+                alert('🎉 مَبْرُوكٌ! أَكْمَلْتَ الدَّرْسَ. اِنْتَقِلْ لِلدَّرْسِ التَّالِي.');
+            }
+            
+            document.getElementById(lessonId).style.display = 'none';
+            document.getElementById('level-1-menu').style.display = 'block';
+            if (typeof buildLessonButtons === 'function') buildLessonButtons();
+            if (typeof updateMainProgress === 'function') updateMainProgress();
+        };
+    });
+</script>
+
+<!-- نهاية الدروس من ٢٣ إلى ٢٨ -->
+<!-- 🎉 تَمَّ بِحَمْدِ اللَّهِ اكْتِمَالُ الْمُسْتَوَى الْأَوَّلِ (٢٨ دَرْسًا) -->
+<!-- ================================================ -->
+<!-- الْمُسْتَوَى الثَّانِي: الْمُدُودُ وَالسُّكُونُ  -->
+<!-- ================================================ -->
+
+<!-- قَائِمَةُ الْمُسْتَوَى الثَّانِي -->
+<div id="level-2-menu" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLevel2Menu()" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلرَّئِيسِيَّةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الْمُسْتَوَى الثَّانِي</h2><p style="font-size: 18px; color: #E8D5A8;">الْمَدُّ بِالْأَلِفِ</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div id="level2-buttons-container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0;"></div>
+        <div style="margin: 20px 0;"><div style="display: flex; justify-content: space-between; color: #E8D5A8; font-size: 14px; margin-bottom: 6px;"><span>تَقَدُّمُكَ فِي الْمَدِّ بِالْأَلِفِ</span><span id="level2-progress-text">٠/٢٨</span></div><div style="height: 8px; background: #1F140A; border-radius: 20px; border: 1px solid #6B4F2C; overflow: hidden;"><div id="level2-progress-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #B8860B, #D4AF37, #FFDF73); border-radius: 20px;"></div></div></div>
+    </div>
+</div>
+
+<script>
+    // بيانات دروس المد بالألف (المستوى الثاني)
+    const level2Lessons = [
+        { name: 'هَمْزَة', symbol: 'آ', lesson: 29 },
+        { name: 'بَاء', symbol: 'بَا', lesson: 30 },
+        { name: 'تَاء', symbol: 'تَا', lesson: 31 },
+        { name: 'ثَاء', symbol: 'ثَا', lesson: 32 },
+        { name: 'جِيم', symbol: 'جَا', lesson: 33 },
+        { name: 'حَاء', symbol: 'حَا', lesson: 34 },
+        { name: 'خَاء', symbol: 'خَا', lesson: 35 },
+        { name: 'دَال', symbol: 'دَا', lesson: 36 },
+        { name: 'ذَال', symbol: 'ذَا', lesson: 37 },
+        { name: 'رَاء', symbol: 'رَا', lesson: 38 },
+        { name: 'زَاي', symbol: 'زَا', lesson: 39 },
+        { name: 'سِين', symbol: 'سَا', lesson: 40 },
+        { name: 'شِين', symbol: 'شَا', lesson: 41 },
+        { name: 'صَاد', symbol: 'صَا', lesson: 42 },
+        { name: 'ضَاد', symbol: 'ضَا', lesson: 43 },
+        { name: 'طَاء', symbol: 'طَا', lesson: 44 },
+        { name: 'ظَاء', symbol: 'ظَا', lesson: 45 },
+        { name: 'عَيْن', symbol: 'عَا', lesson: 46 },
+        { name: 'غَيْن', symbol: 'غَا', lesson: 47 },
+        { name: 'فَاء', symbol: 'فَا', lesson: 48 },
+        { name: 'قَاف', symbol: 'قَا', lesson: 49 },
+        { name: 'كَاف', symbol: 'كَا', lesson: 50 },
+        { name: 'لَام', symbol: 'لَا', lesson: 51 },
+        { name: 'مِيم', symbol: 'مَا', lesson: 52 },
+        { name: 'نُون', symbol: 'نَا', lesson: 53 },
+        { name: 'هَاء', symbol: 'هَا', lesson: 54 },
+        { name: 'وَاو', symbol: 'وَا', lesson: 55 },
+        { name: 'يَاء', symbol: 'يَا', lesson: 56 }
+    ];
+
+    function buildLevel2Buttons() {
+        const container = document.getElementById('level2-buttons-container');
+        if (!container) return;
+        const progress = JSON.parse(localStorage.getItem('yaarub_progress')) || { completedLessons: [] };
+        const completed = progress.completedLessons || [];
+        container.innerHTML = '';
+        level2Lessons.forEach(lesson => {
+            const btn = document.createElement('button');
+            btn.textContent = lesson.symbol;
+            btn.style.fontFamily = "'Amiri', serif";
+            btn.style.fontSize = '28px';
+            btn.style.fontWeight = 'bold';
+            btn.style.padding = '12px 0';
+            btn.style.borderRadius = '20px';
+            btn.style.border = '1px solid #D4AF37';
+            btn.style.cursor = 'pointer';
+            btn.style.boxShadow = '0 4px 0 #6B4F2C';
+            btn.style.background = completed.includes(lesson.lesson) ? '#D4AF37' : '#1F140A';
+            btn.style.color = completed.includes(lesson.lesson) ? '#1F140A' : '#D4AF37';
+            btn.onclick = function() { openLessonByNumber(lesson.lesson); };
+            container.appendChild(btn);
+        });
+        const completedCount = completed.filter(l => l >= 29 && l <= 56).length;
+        document.getElementById('level2-progress-text').textContent = `${completedCount}/٢٨`;
+        document.getElementById('level2-progress-fill').style.width = `${(completedCount/28)*100}%`;
+    }
+
+    function hideLevel2Menu() {
+        document.getElementById('level-2-menu').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'block';
+        if (typeof updateMainProgress === 'function') updateMainProgress();
+    }
+
+    // ربط بطاقة المستوى الثاني بقائمته
+    document.addEventListener('DOMContentLoaded', function() {
+        const level2Card = document.getElementById('level-2-card');
+        if (level2Card) {
+            level2Card.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (level2Card.classList.contains('locked')) {
+                    alert('🔐 أَكْمِلْ ١٠ دُرُوسٍ مِنَ الْمُسْتَوَى الْأَوَّلِ أَوَّلًا.');
+                    return;
+                }
+                document.querySelector('.app-container').style.display = 'none';
+                document.getElementById('level-2-menu').style.display = 'block';
+                buildLevel2Buttons();
+            });
+        }
+    });
+</script>
+
+<!-- ================================================ -->
+<!-- الدرس (٢٩): الْمَدُّ بِالْأَلِفِ - هَمْزَة (آ)    -->
+<!-- ================================================ -->
+<div id="lesson-2-29" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-2-29')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ التَّاسِعُ وَالْعِشْرُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">الْمَدُّ بِالْأَلِفِ: هَمْزَةٌ (آ)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">آ</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">هَمْزَةٌ مَمْدُودَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">أَلِفٌ مَدٌّ بِالْأَلِفِ: آ</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">آسِفٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَحْتَوِي عَلَى (آ):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-2-29', 29)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">آسِفٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-29', 29)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أَسَدٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-29', 29)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">إِبْرِيقٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-29', 29)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">أُسْتَاذٌ</span></div>
+        </div></div>
+        <div id="feedback-2-29" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-2-29', 29)" id="complete-btn-2-29" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('آ')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 آ</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٣٠): الْمَدُّ بِالْأَلِفِ - بَاء (بَا)    -->
+<!-- ================================================ -->
+<div id="lesson-2-30" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-2-30')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّلَاثُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">الْمَدُّ بِالْأَلِفِ: بَاءٌ (بَا)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">بَا</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">بَاءٌ مَمْدُودَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">بَاءٌ مَدٌّ بِالْأَلِفِ: بَا</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">بَابٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَحْتَوِي عَلَى (بَا):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-2-30', 30)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَابٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-30', 30)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَطَّةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-30', 30)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَقَرَةٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-30', 30)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">بَحْرٌ</span></div>
+        </div></div>
+        <div id="feedback-2-30" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-2-30', 30)" id="complete-btn-2-30" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('بَا')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 بَا</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٣١): الْمَدُّ بِالْأَلِفِ - تَاء (تَا)    -->
+<!-- ================================================ -->
+<div id="lesson-2-31" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-2-31')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الْحَادِي وَالثَّلَاثُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">الْمَدُّ بِالْأَلِفِ: تَاءٌ (تَا)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">تَا</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">تَاءٌ مَمْدُودَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">تَاءٌ مَدٌّ بِالْأَلِفِ: تَا</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">تَاجٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَحْتَوِي عَلَى (تَا):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-2-31', 31)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تَاجٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-31', 31)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تُفَّاحٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-31', 31)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تِينٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-31', 31)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">تَلٌّ</span></div>
+        </div></div>
+        <div id="feedback-2-31" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-2-31', 31)" id="complete-btn-2-31" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('تَا')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 تَا</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- الدرس (٣٢): الْمَدُّ بِالْأَلِفِ - ثَاء (ثَا)    -->
+<!-- ================================================ -->
+<div id="lesson-2-32" style="display: none;">
+    <div style="max-width: 480px; margin: 30px auto; background: rgba(43, 27, 14, 0.9); border-radius: 40px; padding: 24px 16px; border: 1px solid #D4AF37; box-shadow: 0 15px 30px rgba(0,0,0,0.7); position: relative; backdrop-filter: blur(8px);">
+        <div style="margin-bottom: 20px;"><button onclick="hideLesson('lesson-2-32')" style="background: none; border: none; color: #D4AF37; font-size: 24px; cursor: pointer; font-family: 'Cairo';">← الْعَوْدَةُ لِلْقَائِمَةِ</button></div>
+        <div style="text-align: center; margin-bottom: 24px;"><h2 style="font-family: 'Amiri', serif; font-size: 36px; color: #D4AF37;">الدَّرْسُ الثَّانِي وَالثَّلَاثُونَ</h2><p style="font-size: 18px; color: #E8D5A8;">الْمَدُّ بِالْأَلِفِ: ثَاءٌ (ثَا)</p><div style="width: 60px; height: 3px; background: #D4AF37; margin: 12px auto;"></div></div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;"><svg width="200" height="180" viewBox="0 0 200 180"><rect x="10" y="10" width="180" height="160" rx="20" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 4"/><rect x="20" y="20" width="160" height="140" rx="15" fill="#1F140A" stroke="#B8860B" stroke-width="2"/><text x="100" y="115" font-family="Amiri, serif" font-size="100" fill="#D4AF37" text-anchor="middle" font-weight="700">ثَا</text><text x="100" y="150" font-family="Cairo, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle">ثَاءٌ مَمْدُودَةٌ</text></svg></div>
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 20px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;"><p style="font-size: 20px; color: #F5E6C8; margin-bottom: 12px;">نُرَدِّدُ مَعًا:</p><p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">ثَاءٌ مَدٌّ بِالْأَلِفِ: ثَا</p></div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0;"><span style="font-size: 18px; color: #E8D5A8;">مِثَالٌ:</span><div style="background: #D4AF37; padding: 12px 24px; border-radius: 40px;"><span style="font-family: 'Amiri', serif; font-size: 36px; font-weight: bold; color: #1F140A;">ثَابِتٌ</span></div></div>
+        <div style="margin: 30px 0 20px;"><p style="font-size: 20px; color: #D4AF37; margin-bottom: 20px; text-align: center;">اخْتَرِ الْكَلِمَةَ الَّتِي تَحْتَوِي عَلَى (ثَا):</p><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+            <div class="quiz-option" data-correct="true" onclick="checkAnswerGeneric(this, true, 'lesson-2-32', 32)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَابِتٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-32', 32)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَعْلَبٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-32', 32)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَمَرٌ</span></div>
+            <div class="quiz-option" data-correct="false" onclick="checkAnswerGeneric(this, false, 'lesson-2-32', 32)"><span style="font-family: 'Amiri', serif; font-size: 42px; color: #F5E6C8;">ثَوْبٌ</span></div>
+        </div></div>
+        <div id="feedback-2-32" style="min-height: 40px; text-align: center; margin: 16px 0; font-size: 20px; color: #FFDF73;"></div>
+        <div style="display: flex; gap: 12px; margin-top: 30px;">
+            <button onclick="completeLesson('lesson-2-32', 32)" id="complete-btn-2-32" disabled style="flex:2; background:#4A3720; color:#A58E6D; padding:16px; border-radius:50px;">أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('ثَا')" style="flex:1; background:#D4AF37; color:#1F140A; font-size:22px; border-radius:50px;">🔊 ثَا</button>
+        </div>
+    </div>
+</div>
+
+<!-- نهاية الدروس ٢٩ إلى ٣٢ -->
+<!-- ================================================ -->
+<!-- نِهَايَةٌ مُؤَقَّتَةٌ لِلْمَلَفِ                   -->
+<!-- لِاسْتِكْمَالِ الْعَمَلِ لَاحِقًا:                -->
+--   احْذِفْ هَذَيْنِ السَّطْرَيْنِ مِنَ النِّهَايَةِ   -->
+--   ثُمَّ أَضِفِ الدُّرُوسَ الْجَدِيدَةَ بَعْدَهُمَا  -->
+<!-- ================================================ -->
+</body>
+</html>

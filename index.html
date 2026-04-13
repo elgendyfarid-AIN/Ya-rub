@@ -5068,5 +5068,115 @@
 <!-- نِهَايَةُ الْمَشْرُوعِ بِأَكْمَلِهِ                 -->
 <!-- تَمَّ بِحَمْدِ اللَّهِ اكْتِمَالُ ٨٤ دَرْساً      -->
 <!-- ================================================ -->
+    <!-- ================================================ -->
+<!-- كود التصحيح الشامل - ضمان عمل جميع الدروس        -->
+<!-- ================================================ -->
+<script>
+    (function() {
+        console.log('🔧 جارٍ إصلاح الدروس...');
+        
+        // التحقق من وجود جميع الدروس (1-84) وإنشاء المفقود منها
+        for (let i = 1; i <= 84; i++) {
+            let lessonId;
+            if (i <= 28) lessonId = `lesson-1-${i}`;
+            else if (i <= 56) lessonId = `lesson-2-${i}`;
+            else if (i <= 72) lessonId = `lesson-3-${i}`;
+            else lessonId = `lesson-4-${i}`;
+            
+            if (!document.getElementById(lessonId)) {
+                console.warn(`⚠️ الدرس ${i} مفقود، جارٍ إنشاؤه...`);
+                const newLesson = document.createElement('div');
+                newLesson.id = lessonId;
+                newLesson.style.display = 'none';
+                newLesson.innerHTML = `
+                    <div class="lesson-container">
+                        <button class="btn-back" onclick="hideLesson('${lessonId}')">← الْعَوْدَةُ</button>
+                        <h2 class="lesson-title">الدَّرْسُ رَقْمُ ${i}</h2>
+                        <p class="lesson-subtitle">هَذَا الدَّرْسُ قَيْدَ التَّجْهِيزِ</p>
+                        <div class="divider"></div>
+                        <div style="text-align: center; padding: 30px;">
+                            <p style="color: #F5E6C8; font-size: 22px;">سَيُتَاحُ قَرِيباً إِنْ شَاءَ اللَّهُ.</p>
+                            <button onclick="hideLesson('${lessonId}')" style="background: #D4AF37; color: #1F140A; padding: 12px 24px; border-radius: 50px; border: none; font-family: 'Cairo'; font-size: 18px; margin-top: 20px;">عَوْدَةٌ</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(newLesson);
+            }
+        }
+        
+        // إصلاح جميع أزرار القوائم
+        function fixAllMenuButtons() {
+            // المستوى الأول
+            const level1Container = document.getElementById('level1-buttons-container');
+            if (level1Container) {
+                level1Container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                    btn.onclick = () => openLessonByNumber(idx + 1);
+                });
+            }
+            
+            // المستوى الثاني
+            const level2Container = document.getElementById('level2-buttons-container');
+            if (level2Container) {
+                level2Container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                    btn.onclick = () => openLessonByNumber(29 + idx);
+                });
+            }
+            
+            // المستوى الثالث
+            const level3Container = document.getElementById('level3-buttons-container');
+            if (level3Container) {
+                level3Container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                    btn.onclick = () => openLessonByNumber(57 + idx);
+                });
+            }
+            
+            // المستوى الرابع
+            const level4Container = document.getElementById('level4-buttons-container');
+            if (level4Container) {
+                level4Container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                    btn.onclick = () => openLessonByNumber(73 + idx);
+                });
+            }
+            
+            console.log('✅ تم إصلاح جميع روابط القوائم.');
+        }
+        
+        // استدعاء الإصلاح بعد تحميل الصفحة
+        setTimeout(fixAllMenuButtons, 200);
+        
+        // أيضاً عند فتح أي قائمة نعيد الإصلاح
+        const originalBuild1 = buildLevel1Buttons;
+        if (originalBuild1) {
+            buildLevel1Buttons = function() {
+                originalBuild1();
+                setTimeout(() => {
+                    const container = document.getElementById('level1-buttons-container');
+                    if (container) {
+                        container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                            btn.onclick = () => openLessonByNumber(idx + 1);
+                        });
+                    }
+                }, 50);
+            };
+        }
+        
+        const originalBuild2 = buildLevel2Buttons;
+        if (originalBuild2) {
+            buildLevel2Buttons = function() {
+                originalBuild2();
+                setTimeout(() => {
+                    const container = document.getElementById('level2-buttons-container');
+                    if (container) {
+                        container.querySelectorAll('.menu-btn').forEach((btn, idx) => {
+                            btn.onclick = () => openLessonByNumber(29 + idx);
+                        });
+                    }
+                }, 50);
+            };
+        }
+        
+        console.log('✅ كود التصحيح الشامل جاهز.');
+    })();
+</script>
 </body>
 </html>

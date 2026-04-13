@@ -4342,5 +4342,308 @@
 <!-- ================================================ -->
 <!-- إغلاق مؤقت للملف (نهاية الدفعة العاشرة)          -->
 <!-- ================================================ -->
+
+<!-- ================================================ -->
+<!-- المستوى الرابع: القراءة والإملاء والتعبير         -->
+<!-- الدفعة الحادية عشرة: قائمة + أول ٤ دروس           -->
+<!-- ================================================ -->
+
+<!-- قَائِمَةُ الْمُسْتَوَى الرَّابِعِ -->
+<div id="level-4-menu" style="display: none;">
+    <div class="lesson-container">
+        <button class="btn-back" onclick="hideLevel4Menu()">← الْعَوْدَةُ لِلرَّئِيسِيَّةِ</button>
+        <h2 class="lesson-title">الْمُسْتَوَى الرَّابِعُ</h2>
+        <p class="lesson-subtitle">الْقِرَاءَةُ وَالْإِمْلَاءُ وَالتَّعْبِيرُ</p>
+        <div class="divider"></div>
+        
+        <!-- شخصية الجد حكيم -->
+        <div style="background: rgba(31, 20, 10, 0.6); border-radius: 30px; padding: 16px; margin: 16px 0; border: 1px solid #D4AF37; display: flex; align-items: center; gap: 12px;">
+            <div style="width: 50px; height: 50px; background: #1F140A; border-radius: 50%; border: 2px solid #D4AF37; display: flex; align-items: center; justify-content: center;">
+                <svg width="40" height="40" viewBox="0 0 48 48">
+                    <circle cx="24" cy="20" r="14" fill="#F5CBA7" stroke="#D4AF37" stroke-width="1.5"/>
+                    <path d="M10 24 Q12 36 24 38 Q36 36 38 24 Q36 32 24 34 Q12 32 10 24" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+                    <rect x="10" y="6" width="28" height="8" rx="4" fill="#D4AF37"/>
+                    <circle cx="24" cy="10" r="4" fill="#B8860B"/>
+                    <circle cx="18" cy="20" r="2.5" fill="#1F140A"/>
+                    <circle cx="30" cy="20" r="2.5" fill="#1F140A"/>
+                    <path d="M18 28 Q24 32 30 28" fill="none" stroke="#1F140A" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div>
+                <p style="color: #F5E6C8; font-size: 16px;">"أَهْلاً بِكَ فِي مَرْحَلَةِ الْقِرَاءَةِ... سَتَقْرَأُ الْيَوْمَ جُمَلاً وَنُصُوصاً جَمِيلَةً."</p>
+            </div>
+        </div>
+        
+        <div id="level4-buttons-container" class="menu-grid"></div>
+        <div style="margin: 20px 0;">
+            <div style="display: flex; justify-content: space-between; color: #E8D5A8; font-size: 14px; margin-bottom: 6px;">
+                <span>تَقَدُّمُكَ فِي الْمُسْتَوَى الرَّابِعِ</span>
+                <span id="level4-progress-text" class="arabic-num">٠/١٢</span>
+            </div>
+            <div style="height: 8px; background: #1F140A; border-radius: 20px; border: 1px solid #6B4F2C; overflow: hidden;">
+                <div id="level4-progress-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #B8860B, #D4AF37, #FFDF73); border-radius: 20px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // بيانات دروس المستوى الرابع (قراءة وإملاء)
+    const level4Lessons = [
+        { name: 'جُمَلٌ', symbol: 'أَنَا', lesson: 73 },
+        { name: 'جُمَلٌ', symbol: 'هَذَا', lesson: 74 },
+        { name: 'جُمَلٌ', symbol: 'فِي', lesson: 75 },
+        { name: 'جُمَلٌ', symbol: 'عَلَى', lesson: 76 },
+        { name: 'قِرَاءَةٌ', symbol: 'الْأُسْرَةُ', lesson: 77 },
+        { name: 'قِرَاءَةٌ', symbol: 'فِي الْحَدِيقَةِ', lesson:78 },
+        { name: 'قِرَاءَةٌ', symbol: 'الْفَاكِهَةُ', lesson: 79 },
+        { name: 'قِرَاءَةٌ', symbol: 'الْحَيَوَانَاتُ', lesson: 80 },
+        { name: 'إِمْلَاءٌ', symbol: 'حَرْفٌ نَاقِصٌ ١', lesson: 81 },
+        { name: 'إِمْلَاءٌ', symbol: 'حَرْفٌ نَاقِصٌ ٢', lesson: 82 },
+        { name: 'تَعْبِيرٌ', symbol: 'أُكْمِلُ الْجُمْلَةَ', lesson: 83 },
+        { name: 'تَعْبِيرٌ', symbol: 'أَصِفُ الصُّورَةَ', lesson: 84 }
+    ];
+
+    function buildLevel4Buttons() {
+        const container = document.getElementById('level4-buttons-container');
+        if (!container) return;
+        const progress = getProgress();
+        const completed = progress.completedLessons || [];
+        container.innerHTML = '';
+        level4Lessons.forEach(lesson => {
+            const btn = document.createElement('button');
+            btn.textContent = lesson.symbol;
+            btn.className = 'menu-btn';
+            btn.style.fontSize = '22px';
+            btn.style.background = completed.includes(lesson.lesson) ? '#D4AF37' : '#1F140A';
+            btn.style.color = completed.includes(lesson.lesson) ? '#1F140A' : '#D4AF37';
+            btn.onclick = () => openLessonByNumber(lesson.lesson);
+            container.appendChild(btn);
+        });
+        const completedCount = completed.filter(l => l >= 73 && l <= 84).length;
+        document.getElementById('level4-progress-text').textContent = `${toArabicNumerals(completedCount)}/١٢`;
+        document.getElementById('level4-progress-fill').style.width = `${(completedCount/12)*100}%`;
+    }
+
+    function hideLevel4Menu() {
+        document.getElementById('level-4-menu').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'block';
+        updateMainProgress();
+    }
+
+    // ربط بطاقة المستوى الرابع
+    document.addEventListener('DOMContentLoaded', function() {
+        const level4Card = document.getElementById('level-4-card');
+        if (level4Card) {
+            const newLevel4 = level4Card.cloneNode(true);
+            level4Card.parentNode.replaceChild(newLevel4, level4Card);
+            newLevel4.addEventListener('click', function(e) {
+                e.preventDefault();
+                const progress = getProgress();
+                const completed = progress.completedLessons || [];
+                const completedSoFar = completed.filter(l => l >= 1 && l <= 72).length;
+                
+                if (completedSoFar < 45) {
+                    showLockMessage(4);
+                } else {
+                    document.querySelector('.app-container').style.display = 'none';
+                    document.getElementById('level-4-menu').style.display = 'block';
+                    buildLevel4Buttons();
+                }
+            });
+        }
+    });
+
+    // توسيع دوال التنقل لتشمل المستوى الرابع
+    const megaOpenLesson = openLessonByNumber;
+    openLessonByNumber = function(num) {
+        document.querySelector('.app-container').style.display = 'none';
+        document.getElementById('level-1-menu').style.display = 'none';
+        document.getElementById('level-2-menu').style.display = 'none';
+        document.getElementById('level-3-menu').style.display = 'none';
+        document.getElementById('level-4-menu').style.display = 'none';
+        
+        let lessonId;
+        if (num <= 28) lessonId = `lesson-1-${num}`;
+        else if (num <= 56) lessonId = `lesson-2-${num}`;
+        else if (num <= 72) lessonId = `lesson-3-${num}`;
+        else lessonId = `lesson-4-${num}`;
+        
+        const lessonEl = document.getElementById(lessonId);
+        if (lessonEl) {
+            lessonEl.style.display = 'block';
+            setTimeout(() => {
+                if (typeof shuffleQuizOptions === 'function') {
+                    shuffleQuizOptions(lessonEl);
+                }
+            }, 10);
+        } else {
+            alert('هَذَا الدَّرْسُ غَيْرُ مُتَاحٍ بَعْدُ. سَنُضِيفُهُ قَرِيباً.');
+            document.querySelector('.app-container').style.display = 'block';
+        }
+    };
+
+    const megaHideLesson = hideLesson;
+    hideLesson = function(lessonId) {
+        document.getElementById(lessonId).style.display = 'none';
+        const lessonNum = parseInt(lessonId.split('-')[2]);
+        if (lessonNum <= 28) {
+            document.getElementById('level-1-menu').style.display = 'block';
+            if (typeof buildLevel1Buttons === 'function') buildLevel1Buttons();
+        } else if (lessonNum <= 56) {
+            document.getElementById('level-2-menu').style.display = 'block';
+            if (typeof buildLevel2Buttons === 'function') buildLevel2Buttons();
+        } else if (lessonNum <= 72) {
+            document.getElementById('level-3-menu').style.display = 'block';
+            if (typeof buildLevel3Buttons === 'function') buildLevel3Buttons();
+        } else {
+            document.getElementById('level-4-menu').style.display = 'block';
+            if (typeof buildLevel4Buttons === 'function') buildLevel4Buttons();
+        }
+        lessonAnsweredState[lessonNum] = false;
+        updateMainProgress();
+    };
+</script>
+
+<!-- ================================================ -->
+<!-- الدرس ٧٣: قِرَاءَةُ جُمْلَةٍ (أَنَا)              -->
+<!-- ================================================ -->
+<div id="lesson-4-73" style="display: none;">
+    <div class="lesson-container">
+        <button class="btn-back" onclick="hideLesson('lesson-4-73')">← الْعَوْدَةُ لِلْقَائِمَةِ</button>
+        <h2 class="lesson-title">الدَّرْسُ الثَّالِثُ وَالسَّبْعُونَ</h2>
+        <p class="lesson-subtitle">قِرَاءَةُ جُمْلَةٍ: أَنَا</p>
+        <div class="divider"></div>
+        
+        <div style="background: rgba(31, 20, 10, 0.6); border-radius: 24px; padding: 16px; margin: 16px 0; border-right: 6px solid #D4AF37;">
+            <p style="color: #F5E6C8; font-size: 18px;">"هَيَّا نَقْرَأُ مَعاً يَا بَطَلُ..."</p>
+        </div>
+        
+        <!-- صورة معبرة -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='50' fill='%23F5CBA7'/%3E%3Ccircle cx='45' cy='50' r='5' fill='%231F140A'/%3E%3Ccircle cx='75' cy='50' r='5' fill='%231F140A'/%3E%3Cpath d='M45 75 Q60 85 75 75' fill='none' stroke='%231F140A' stroke-width='3'/%3E%3Ctext x='60' y='110' font-family='Arial' font-size='14' fill='%23D4AF37' text-anchor='middle'%3Eوَلَدٌ%3C/text%3E%3C/svg%3E" alt="ولد" style="border-radius: 30px; border: 2px solid #D4AF37;">
+        </div>
+        
+        <!-- جملة القراءة -->
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 30px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37; line-height: 1.8;">أَنَا وَلَدٌ.</p>
+        </div>
+        
+        <!-- أسئلة الفهم -->
+        <p style="font-size: 20px; color: #D4AF37; margin: 20px 0; text-align: center;">مَاذَا قَرَأْنَا؟</p>
+        <div class="quiz-grid">
+            <div class="quiz-option" data-correct="true"><span>أَنَا وَلَدٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>أَنَا بِنْتٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>هَذَا وَلَدٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>أَنَا أَسَدٌ.</span></div>
+        </div>
+        
+        <div id="feedback-4-73" class="feedback-message"></div>
+        <div class="action-buttons">
+            <button onclick="completeLesson('lesson-4-73', 73)" id="complete-btn-4-73" class="btn-complete" disabled>أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('أَنَا وَلَدٌ')" class="btn-speak">🔊</button>
+        </div>
+    </div>
+</div>
+
+<!-- الدرس ٧٤: قِرَاءَةُ جُمْلَةٍ (هَذَا) -->
+<div id="lesson-4-74" style="display: none;">
+    <div class="lesson-container">
+        <button class="btn-back" onclick="hideLesson('lesson-4-74')">← الْعَوْدَةُ لِلْقَائِمَةِ</button>
+        <h2 class="lesson-title">الدَّرْسُ الرَّابِعُ وَالسَّبْعُونَ</h2>
+        <p class="lesson-subtitle">قِرَاءَةُ جُمْلَةٍ: هَذَا</p>
+        <div class="divider"></div>
+        
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect x='20' y='40' width='80' height='60' rx='10' fill='%238B4513'/%3E%3Crect x='45' y='15' width='30' height='30' fill='%23D4AF37'/%3E%3Ctext x='60' y='110' font-family='Arial' font-size='14' fill='%23D4AF37' text-anchor='middle'%3Eبَيْتٌ%3C/text%3E%3C/svg%3E" alt="بيت" style="border-radius: 30px; border: 2px solid #D4AF37;">
+        </div>
+        
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 30px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">هَذَا بَيْتٌ.</p>
+        </div>
+        
+        <p style="font-size: 20px; color: #D4AF37; margin: 20px 0; text-align: center;">مَاذَا قَرَأْنَا؟</p>
+        <div class="quiz-grid">
+            <div class="quiz-option" data-correct="true"><span>هَذَا بَيْتٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>هَذِهِ بَيْتٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>هَذَا قَلَمٌ.</span></div>
+            <div class="quiz-option" data-correct="false"><span>هَذَا كِتَابٌ.</span></div>
+        </div>
+        
+        <div id="feedback-4-74" class="feedback-message"></div>
+        <div class="action-buttons">
+            <button onclick="completeLesson('lesson-4-74', 74)" id="complete-btn-4-74" class="btn-complete" disabled>أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('هَذَا بَيْتٌ')" class="btn-speak">🔊</button>
+        </div>
+    </div>
+</div>
+
+<!-- الدرس ٧٥: قِرَاءَةُ جُمْلَةٍ (فِي) -->
+<div id="lesson-4-75" style="display: none;">
+    <div class="lesson-container">
+        <button class="btn-back" onclick="hideLesson('lesson-4-75')">← الْعَوْدَةُ لِلْقَائِمَةِ</button>
+        <h2 class="lesson-title">الدَّرْسُ الْخَامِسُ وَالسَّبْعُونَ</h2>
+        <p class="lesson-subtitle">قِرَاءَةُ جُمْلَةٍ: فِي</p>
+        <div class="divider"></div>
+        
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect x='30' y='40' width='60' height='50' rx='5' fill='%231F140A'/%3E%3Ctext x='60' y='75' font-family='Arial' font-size='40' text-anchor='middle' fill='%23D4AF37'%3E📖%3C/text%3E%3Ctext x='60' y='110' font-family='Arial' font-size='14' fill='%23D4AF37' text-anchor='middle'%3Eكِتَابٌ%3C/text%3E%3C/svg%3E" alt="كتاب" style="border-radius: 30px; border: 2px solid #D4AF37;">
+        </div>
+        
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 30px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">اَلْكِتَابُ فِي الْحَقِيبَةِ.</p>
+        </div>
+        
+        <p style="font-size: 20px; color: #D4AF37; margin: 20px 0; text-align: center;">أَيْنَ الْكِتَابُ؟</p>
+        <div class="quiz-grid">
+            <div class="quiz-option" data-correct="true"><span>فِي الْحَقِيبَةِ</span></div>
+            <div class="quiz-option" data-correct="false"><span>عَلَى الطَّاوِلَةِ</span></div>
+            <div class="quiz-option" data-correct="false"><span>تَحْتَ السَّرِيرِ</span></div>
+            <div class="quiz-option" data-correct="false"><span>فَوْقَ الرَّفِّ</span></div>
+        </div>
+        
+        <div id="feedback-4-75" class="feedback-message"></div>
+        <div class="action-buttons">
+            <button onclick="completeLesson('lesson-4-75', 75)" id="complete-btn-4-75" class="btn-complete" disabled>أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('الْكِتَابُ فِي الْحَقِيبَةِ')" class="btn-speak">🔊</button>
+        </div>
+    </div>
+</div>
+
+<!-- الدرس ٧٦: قِرَاءَةُ جُمْلَةٍ (عَلَى) -->
+<div id="lesson-4-76" style="display: none;">
+    <div class="lesson-container">
+        <button class="btn-back" onclick="hideLesson('lesson-4-76')">← الْعَوْدَةُ لِلْقَائِمَةِ</button>
+        <h2 class="lesson-title">الدَّرْسُ السَّادِسُ وَالسَّبْعُونَ</h2>
+        <p class="lesson-subtitle">قِرَاءَةُ جُمْلَةٍ: عَلَى</p>
+        <div class="divider"></div>
+        
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect x='30' y='50' width='60' height='10' rx='3' fill='%238B4513'/%3E%3Crect x='40' y='60' width='10' height='40' fill='%238B4513'/%3E%3Crect x='70' y='60' width='10' height='40' fill='%238B4513'/%3E%3Ccircle cx='60' cy='35' r='15' fill='%23F39C12'/%3E%3Ctext x='60' y='110' font-family='Arial' font-size='14' fill='%23D4AF37' text-anchor='middle'%3Eتُفَّاحَةٌ%3C/text%3E%3C/svg%3E" alt="تفاحة على طاولة" style="border-radius: 30px; border: 2px solid #D4AF37;">
+        </div>
+        
+        <div style="background: #2B1B0E; border-radius: 30px; padding: 30px; margin: 20px 0; border: 1px solid #6B4F2C; text-align: center;">
+            <p style="font-family: 'Amiri', serif; font-size: 48px; font-weight: bold; color: #D4AF37;">اَلتُّفَّاحَةُ عَلَى الطَّاوِلَةِ.</p>
+        </div>
+        
+        <p style="font-size: 20px; color: #D4AF37; margin: 20px 0; text-align: center;">أَيْنَ التُّفَّاحَةُ؟</p>
+        <div class="quiz-grid">
+            <div class="quiz-option" data-correct="true"><span>عَلَى الطَّاوِلَةِ</span></div>
+            <div class="quiz-option" data-correct="false"><span>فِي الْحَقِيبَةِ</span></div>
+            <div class="quiz-option" data-correct="false"><span>تَحْتَ الْكُرْسِيِّ</span></div>
+            <div class="quiz-option" data-correct="false"><span>فَوْقَ السَّرِيرِ</span></div>
+        </div>
+        
+        <div id="feedback-4-76" class="feedback-message"></div>
+        <div class="action-buttons">
+            <button onclick="completeLesson('lesson-4-76', 76)" id="complete-btn-4-76" class="btn-complete" disabled>أَكْمَلْتُ الدَّرْسَ</button>
+            <button onclick="speakText('التُّفَّاحَةُ عَلَى الطَّاوِلَةِ')" class="btn-speak">🔊</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================ -->
+<!-- إغلاق مؤقت للملف (نهاية الدفعة الحادية عشرة)     -->
+<!-- ================================================ -->
 </body>
 </html>
